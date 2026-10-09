@@ -126,4 +126,106 @@ return $tutor;
     echo "Erro: " . $e->getMessage();
 }
 }
+
+
+function cadastrarAgendamento($conexao, $id_tutor, $id_paciente, $tipo_atendimento, $data, $horario, $observacoes) {
+    $sql = "INSERT INTO agendamentos
+            (id_tutor, id_paciente, tipo_atendimento, data, horario, observacoes, status)
+            VALUES
+            (:id_tutor, :id_paciente, :tipo_atendimento, :data, :horario, :observacoes, :status)";
+
+    try {
+        $stmt = $conexao->prepare($sql);
+
+        $stmt->bindParam(":id_tutor", $id_tutor);
+        $stmt->bindParam(":id_paciente", $id_paciente);
+        $stmt->bindParam(":tipo_atendimento", $tipo_atendimento);
+        $stmt->bindParam(":data", $data);
+        $stmt->bindParam(":horario", $horario);
+        $stmt->bindParam(":observacoes", $observacoes);
+
+        $status = "pendente";
+        $stmt->bindParam(":status", $status);
+
+        $stmt->execute();
+
+        return true;
+
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
+
+function listarAgendamentos($conexao) {
+    $sql = "SELECT
+                agendamentos.id,
+                agendamentos.id_tutor,
+                agendamentos.id_paciente,
+                agendamentos.tipo_atendimento,
+                agendamentos.data,
+                agendamentos.horario,
+                agendamentos.observacoes,
+                agendamentos.status,
+                tutores.nome AS nome_tutor,
+                tutores.telefone AS telefone_tutor,
+                pacientes.nome AS nome_animal,
+                pacientes.tipo_animal
+            FROM agendamentos
+            INNER JOIN tutores
+                ON agendamentos.id_tutor = tutores.id
+            INNER JOIN pacientes
+                ON agendamentos.id_paciente = pacientes.id
+            ORDER BY agendamentos.id DESC";
+
+    try {
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $e) {
+        return [];
+    }
+}
+
+
+function atualizarStatusAgendamento($conexao, $id, $status) {
+    $sql = "UPDATE agendamentos
+            SET status = :status
+            WHERE id = :id";
+
+    try {
+        $stmt = $conexao->prepare($sql);
+
+        $stmt->bindParam(":status", $status);
+        $stmt->bindParam(":id", $id);
+
+        $stmt->execute();
+
+        return true;
+
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
+
+function listarPacientesTutor($conexao, $id_tutor) {
+    $sql = "SELECT id, nome, tipo_animal
+            FROM pacientes
+            WHERE id_tutor = :id_tutor
+            ORDER BY nome";
+
+    try {
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindParam(":id_tutor", $id_tutor);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $e) {
+        return [];
+    }
+}
 ?>

@@ -11,9 +11,9 @@
                 <i class="bi bi-person"></i>
             </a>
 
-            <a href="/app/servicos.php">Serviços</a>
+            <a href="/servicos.php">Serviços</a>
 
-            <a href="/app/agendamentos.php">Agendamentos</a>
+            <a href="/agendamentos.php">Agendamentos</a>
 
             <a href="#sobre">Sobre</a>
 
