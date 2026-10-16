@@ -1,0 +1,120 @@
+/* Cabeçalho */
+header {
+    width: 100%;
+    background-color: #A09B69;
+    border-bottom: 1px solid #858052;
+}
+
+/* Menu de navegação */
+header nav {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 30px;
+}
+
+/* Grupo principal de links */
+header nav .menu-principal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    gap: 25px;
+}
+
+/* Logo */
+header nav .logo-vetcare {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+header nav .logo-vetcare img {
+    height: 95px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Links do menu */
+header nav a {
+    color: #F0EBDC;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+header nav a:hover {
+    color: #E6CDC8;
+}
+
+/* Ícones com texto abaixo */
+header nav a.link-icone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: #F0EBDC;
+    text-decoration: none;
+}
+
+/* Ícones */
+header nav a.link-icone i {
+    font-size: 23px;
+    vertical-align: middle;
+}
+
+/* Textos abaixo dos ícones */
+header nav a.link-icone span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Efeito ao passar o mouse nos ícones */
+header nav a.link-icone:hover {
+    color: #E6CDC8;
+}
+
+/* Grupo do ícone de sair */
+header nav .menu-sair {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+/* Alinhamento do ícone de sair */
+header nav .menu-sair a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagebola {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Rolagem suave */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+
+body {
+    scroll-behavior: smooth;
+}

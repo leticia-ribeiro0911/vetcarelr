@@ -1,0 +1,97 @@
+/* Rodapé */
+footer {
+    width: 100%;
+    background-color: #A09B69;
+    color: #F0EBDC;
+    font-family: Arial, sans-serif;
+}
+
+/* Conteúdo principal */
+.footer-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 50px 7%;
+}
+
+/* Colunas */
+.footer-sobre,
+.footer-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Apresentação */
+.footer-sobre {
+    max-width: 400px;
+}
+
+/* Títulos */
+.footer-conteudo h3 {
+    color: #FFFFFF;
+    font-size: 19px;
+    margin: 0 0 8px;
+}
+
+/* Textos */
+.footer-conteudo p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Fale conosco */
+.footer-contato a {
+    color: #E6CDC8;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    width: fit-content;
+    transition: color 0.3s ease;
+}
+
+.footer-contato a:hover {
+    color: #F0EBDC;
+}
+
+/* Faixa inferior */
+.footer-final {
+    background-color: #785028;
+    padding: 18px 20px;
+    text-align: center;
+}
+
+.imagebola {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.footer-logo img {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Direitos autorais */
+.footer-final p {
+    color: #F0EBDC;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Rolagem suave */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+
+body {
+    scroll-behavior: smooth;
+}

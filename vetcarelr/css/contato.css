@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;500;600&display=swap');
+
+/* Página de contato */
+
+body {
+    margin: 0;
+    background-color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    color: #5D5143;
+}
+
+/* Área principal */
+
+#contato {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    min-height: 445px;
+    box-sizing: border-box;
+}
+
+/* Informações de contato */
+
+#contato > div:first-child {
+    padding: 25px 35px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Título */
+
+#contato h1 {
+    margin: 0 0 25px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    font-style: italic;
+    color: #785028;
+}
+
+/* Informações individuais */
+
+#contato p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0 20px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Ícones */
+
+#contato p i {
+    flex-shrink: 0;
+    font-size: 29px;
+    color: #A09B69;
+}
+
+/* Caixas arredondadas dos textos */
+
+#contato p span {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-height: 40px;
+    padding: 8px 14px;
+    box-sizing: border-box;
+    border: 1px solid #A09B69;
+    border-radius: 30px;
+    color: #5D5143;
+}
+
+/* Endereço */
+
+#contato p:last-child span {
+    min-height: 55px;
+}
+
+/* Área do mapa */
+
+#contato > div:last-child {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mapa */
+
+#contato iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 445px;
+    flex: 1;
+    border: 0;
+}

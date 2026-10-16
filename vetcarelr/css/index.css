@@ -1,0 +1,77 @@
+/* Estilo geral */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #F0EBDC;
+    color: #785028;
+    font-family: Arial, sans-serif;
+}
+
+/* Vídeo inicial */
+
+.video-inicial {
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    background-color: #A09B69;
+}
+
+.video-inicial video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Seção Sobre */
+
+#sobre {
+    background-color: #F0EBDC;
+    padding: 75px 20px 85px;
+    text-align: center;
+    color: #785028;
+}
+
+#sobre h1 {
+    color: #785028;
+    font-size: 34px;
+    line-height: 1.4;
+    margin: 0 auto 35px;
+    max-width: 800px;
+}
+
+/* Textos da seção Sobre */
+
+#sobre p {
+    background-color: #fffdf8;
+    max-width: 850px;
+    margin: 0 auto 20px;
+    padding: 25px 30px;
+    border-radius: 10px;
+    border-left: 5px solid #E6CDC8;
+    font-size: 16px;
+    line-height: 1.9;
+    text-align: justify;
+}
+
+/* Detalhe no último parágrafo */
+
+#sobre p:last-child {
+    border-left-color: #E6CDC8;
+    margin-bottom: 0;
+}
+
+/* Rolagem suave */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+
+body {
+    scroll-behavior: smooth;
+}
