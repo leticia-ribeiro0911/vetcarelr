@@ -4,7 +4,7 @@ body {
     margin: 0;
     background-color: #F0EBDC;
     font-family: 'Montserrat', sans-serif;
-    color: #785028;
+    color: #3D4944;
 }
 
 /* Conteúdo principal */
@@ -16,7 +16,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #FFFFFF;
+    background-color: #F0EBDC;
 }
 
 /* Caixa de cadastro */
@@ -26,8 +26,9 @@ body {
     max-width: 450px;
     padding: 35px;
     box-sizing: border-box;
-    border: 1px solid #A09B69;
-    border-radius: 12px;
+    border: 2px solid #97CBB7;
+    border-top: 5px solid #E2A3A6;
+    border-radius: 10px;
     background-color: #FFFFFF;
 }
 
@@ -39,7 +40,7 @@ body {
     font-family: 'DM Serif Display', serif;
     font-size: 36px;
     font-weight: 400;
-    color: #785028;
+    color: #4C9C9B;
 }
 
 /* Formulário */
@@ -55,7 +56,7 @@ body {
     margin-bottom: 8px;
     font-size: 14px;
     font-weight: 500;
-    color: #5D5143;
+    color: #3D4944;
 }
 
 .conteudo-cadastro input[type="text"],
@@ -64,18 +65,18 @@ body {
     padding: 12px;
     margin-bottom: 20px;
     box-sizing: border-box;
-    border: 1px solid #A09B69;
+    border: 1px solid #97CBB7;
     border-radius: 6px;
     outline: none;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-    color: #5D5143;
+    color: #3D4944;
 }
 
 /* Texto de exemplo dos campos */
 
 .conteudo-cadastro input::placeholder {
-    color: #A09B69;
+    color: #777777;
     opacity: 1;
 }
 
@@ -83,7 +84,7 @@ body {
 
 .conteudo-cadastro input[type="text"]:focus,
 .conteudo-cadastro input[type="password"]:focus {
-    border-color: #785028;
+    border-color: #4C9C9B;
 }
 
 /* Botão de cadastro */
@@ -93,17 +94,17 @@ body {
     margin-top: 5px;
     border: none;
     border-radius: 6px;
-    background-color: #785028;
+    background-color: #4C9C9B;
     color: #FFFFFF;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .botao-cadastro:hover {
-    background-color: #A09B69;
+    background-color: #367F7E;
 }
 
 /* Link para login */
@@ -113,17 +114,17 @@ body {
     text-align: center;
     font-size: 13px;
     line-height: 1.7;
-    color: #5D5143;
+    color: #3D4944;
 }
 
 .conteudo-cadastro p a {
-    color: #785028;
+    color: #4C9C9B;
     font-weight: 600;
     text-decoration: underline;
 }
 
 .conteudo-cadastro p a:hover {
-    color: #A09B69;
+    color: #D18489;
 }
 
 /* Rolagem suave */
@@ -131,8 +132,4 @@ body {
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 20px;
-}
-
-body {
-    scroll-behavior: smooth;
 }

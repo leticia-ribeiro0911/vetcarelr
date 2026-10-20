@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F0EBDC;
+    color: #4C9C9B;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Conteúdo principal */
+.pagina-inicio {
+    min-height: 65vh;
+    padding: 60px 8%;
+}
+
+/* Saudação */
+.boas-vindas {
+    margin-bottom: 40px;
+}
+
+.texto-pequeno {
+    color: #E2A3A6;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.boas-vindas h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 38px;
+    font-weight: normal;
+    color: #4C9C9B;
+    margin-bottom: 12px;
+}
+
+.boas-vindas p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #4C9C9B;
+}
+
+/* Cards das contagens */
+.resumo {
+    display: flex;
+    gap: 25px;
+    justify-content: space-between;
+}
+
+.cartao-resumo {
+    background-color: #FFFFFF;
+    width: 33.33%;
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid #E2A3A6;
+    box-shadow: 0 4px 12px rgba(226, 163, 166, 0.12);
+    transition: 0.3s;
+}
+
+.cartao-resumo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(226, 163, 166, 0.20);
+}
+
+/* Ícones rosados */
+.icone-resumo {
+    width: 48px;
+    height: 48px;
+    background-color: #FBE8E9;
+    color: #E2A3A6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 23px;
+    margin-bottom: 22px;
+}
+
+.cartao-resumo h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4C9C9B;
+    margin-bottom: 12px;
+}
+
+.numero {
+    font-size: 42px;
+    font-weight: 700;
+    color: #4C9C9B;
+    margin-bottom: 22px;
+}
+
+.cartao-resumo a {
+    color: #E2A3A6;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.cartao-resumo a:hover {
+    color: #C98287;
+}

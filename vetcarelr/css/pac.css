@@ -1,0 +1,173 @@
+
+/* Estilo geral da página */
+body {
+    margin: 0;
+    background-color: #F0EBDC;
+    color: #4C9C9B;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Conteúdo principal */
+main {
+    padding: 40px 6%;
+    min-height: 65vh;
+}
+
+/* Título principal */
+main > h1 {
+    color: #4C9C9B;
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+/* Texto de apresentação */
+main > p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Link para cadastrar paciente */
+main > p a {
+    display: inline-block;
+    background-color: #E2A3A6;
+    color: #FFFFFF;
+    padding: 12px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+main > p a:hover {
+    background-color: #C98287;
+}
+
+/* Separadores principais */
+main > hr {
+    border: none;
+    border-top: 1px solid #E2A3A6;
+    margin: 30px 0;
+}
+
+/* Seções de cadastro */
+main > div {
+    background-color: #FFFFFF;
+    border: 1px solid #E2A3A6;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+/* Títulos das seções */
+main > div > h2 {
+    color: #4C9C9B;
+    font-size: 21px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Formulário de busca */
+main form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Texto do campo de busca */
+main form label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Campo para digitar o ID */
+main form input[type="number"] {
+    padding: 10px;
+    border: 1px solid #97CBB7;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    width: 180px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Campo selecionado */
+main form input[type="number"]:focus {
+    outline: 2px solid #97CBB7;
+}
+
+/* Botão de busca */
+main form input[type="submit"] {
+    background-color: #4C9C9B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+main form input[type="submit"]:hover {
+    background-color: #397F7E;
+}
+
+/* Cartões individuais dos pacientes */
+main > div > div {
+    background-color: #FDFBF7;
+    border: 1px solid #E2A3A6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Nome do paciente */
+main > div > div h2 {
+    color: #4C9C9B;
+    font-size: 19px;
+    margin-top: 0;
+}
+
+/* Subtítulo dos dados do tutor */
+main > div > div h3 {
+    color: #E2A3A6;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+/* Informações do paciente e do tutor */
+main > div > div p {
+    color: #4C9C9B;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* Linha dentro dos cartões */
+main > div > div hr {
+    border: none;
+    border-top: 1px solid #F0EBDC;
+    margin-top: 20px;
+}
+
+
+/* Título e botão de cadastro alinhados */
+main > h1 {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+main > p:has(a[href="novopet.php"]) {
+    display: inline-block;
+    float: right;
+    margin-top: -100;
+    margin-bottom: 10px;
+}

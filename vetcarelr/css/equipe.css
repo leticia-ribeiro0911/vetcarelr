@@ -1,0 +1,182 @@
+/* Estilo geral da página */
+body {
+    margin: 0;
+    background-color: #F0EBDC;
+    color: #4C9C9B;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Conteúdo principal */
+main {
+    padding: 40px 6%;
+    min-height: 65vh;
+}
+
+/* Título principal */
+main > h1 {
+    display: inline-block;
+    color: #4C9C9B;
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Texto de apresentação */
+main > p:first-of-type {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+/* Botão novo usuário */
+main > p:nth-of-type(2) {
+    float: right;
+    margin-top: -150px;
+    margin-bottom: 65px;
+}
+
+main > p:nth-of-type(2) a {
+    display: inline-block;
+    background-color: #E2A3A6;
+    color: #FFFFFF;
+    padding: 12px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+main > p:nth-of-type(2) a:hover {
+    background-color: #C98287;
+}
+
+/* Formulário de busca */
+main > form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 25px 0 35px;
+}
+
+/* Texto da busca */
+main > form label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Campo de busca */
+main > form input[type="number"] {
+    width: 200px;
+    max-width: 100%;
+    padding: 10px;
+    border: 1px solid #97CBB7;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+/* Campo selecionado */
+main > form input[type="number"]:focus {
+    outline: 2px solid #97CBB7;
+}
+
+/* Botão buscar */
+main > form input[type="submit"] {
+    background-color: #4C9C9B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+main > form input[type="submit"]:hover {
+    background-color: #397F7E;
+}
+
+/* Título da lista de funcionários */
+main > h2 {
+    color: #4C9C9B;
+    font-size: 22px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+/* Cartão de cada funcionário */
+main > div {
+    background-color: #FFFFFF;
+    border: 1px solid #E2A3A6;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+/* Nome do funcionário */
+main > div h2 {
+    color: #4C9C9B;
+    font-size: 19px;
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+/* Informações do funcionário */
+main > div p {
+    color: #4C9C9B;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* Link editar */
+main > div p a {
+    display: inline-block;
+    color: #4C9C9B;
+    border: 1px solid #97CBB7;
+    border-radius: 6px;
+    padding: 9px 16px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+main > div p a:hover {
+    background-color: #E8F3EF;
+}
+
+/* Formulário de exclusão */
+main > div form {
+    margin-top: 10px;
+}
+
+/* Botão excluir */
+main > div form input[type="submit"] {
+    background-color: #E2A3A6;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+main > div form input[type="submit"]:hover {
+    background-color: #C98287;
+}
+
+/* Linha dentro dos cartões */
+main > div hr {
+    border: none;
+    border-top: 1px solid #F0EBDC;
+    margin-top: 22px;
+}

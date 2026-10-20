@@ -9,16 +9,20 @@ if (isset($_GET['id'])) {
 }
 
 // Consulta os funcionários
-if ($id != "") {
-    $funcionario = consultarfuncionarioid($conexao, $id);
+$funcionarios = [];
 
-    $funcionarios = [];
+if (isset($conexao)) {
 
-    if ($funcionario) {
-        $funcionarios[] = $funcionario;
+    if ($id != "") {
+        $funcionario = consultarfuncionarioid($conexao, $id);
+
+        if ($funcionario) {
+            $funcionarios[] = $funcionario;
+        }
+
+    } else {
+        $funcionarios = consultarfuncionarios($conexao);
     }
-} else {
-    $funcionarios = consultarfuncionarios($conexao);
 }
 ?>
 
@@ -30,6 +34,7 @@ if ($id != "") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/equipe.css">
 
     <title>VetCare LR - Equipe</title>
 </head>
@@ -54,7 +59,7 @@ if ($id != "") {
                 name="id"
                 id="id"
                 placeholder="Buscar por ID..."
-                value="<?php echo htmlspecialchars($id); ?>"
+                value="<?php echo $id; ?>"
             >
 
             <input type="submit" value="Buscar">
@@ -65,82 +70,52 @@ if ($id != "") {
             <a href="novouser.php">+ Novo usuário</a>
         </p>
 
-        <section>
+        <h2>Funcionários cadastrados</h2>
 
-            <h2>Funcionários cadastrados</h2>
+        <?php if (count($funcionarios) > 0) { ?>
 
-            <?php if (count($funcionarios) > 0) { ?>
+            <?php foreach ($funcionarios as $funcionario) { ?>
 
-                <table>
+                <div>
 
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome completo</th>
-                            <th>E-mail</th>
-                            <th>Telefone</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
+                    <h2><?php echo $funcionario['nome']; ?></h2>
 
-                    <tbody>
+                    <p>ID: <?php echo $funcionario['id']; ?></p>
 
-                        <?php foreach ($funcionarios as $funcionario) { ?>
+                    <p>E-mail: <?php echo $funcionario['email']; ?></p>
 
-                            <tr>
+                    <p>Telefone: <?php echo $funcionario['telefone']; ?></p>
 
-                                <td>
-                                    <?php echo $funcionario['id']; ?>
-                                </td>
+                    <p>
+                        <a href="editaruser.php?id=<?php echo $funcionario['id']; ?>">
+                            Editar
+                        </a>
+                    </p>
 
-                                <td>
-                                    <?php echo htmlspecialchars($funcionario['nome']); ?>
-                                </td>
+                    <form action="excluiruser.php" method="post"
+                        onsubmit="return confirm('Tem certeza que deseja excluir este funcionário?');">
 
-                                <td>
-                                    <?php echo htmlspecialchars($funcionario['email']); ?>
-                                </td>
+                        <input
+                            type="hidden"
+                            name="id"
+                            value="<?php echo $funcionario['id']; ?>"
+                        >
 
-                                <td>
-                                    <?php echo htmlspecialchars($funcionario['telefone']); ?>
-                                </td>
+                        <input type="submit" value="Excluir">
 
-                                <td>
+                    </form>
 
-                                    <a href="editaruser.php?id=<?php echo $funcionario['id']; ?>">
-                                        Editar
-                                    </a>
+                    <hr>
 
-                                    <form action="excluiruser.php" method="post"
-                                        onsubmit="return confirm('Tem certeza que deseja excluir este funcionário?');">
-
-                                        <input
-                                            type="hidden"
-                                            name="id"
-                                            value="<?php echo $funcionario['id']; ?>"
-                                        >
-
-                                        <input type="submit" value="Excluir">
-
-                                    </form>
-
-                                </td>
-
-                            </tr>
-
-                        <?php } ?>
-
-                    </tbody>
-
-                </table>
-
-            <?php } else { ?>
-
-                <p>Nenhum funcionário encontrado.</p>
+                </div>
 
             <?php } ?>
 
-        </section>
+        <?php } else { ?>
+
+            <p>Nenhum funcionário encontrado.</p>
+
+        <?php } ?>
 
     </main>
 

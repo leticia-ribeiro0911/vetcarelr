@@ -4,12 +4,18 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+
 body {
     margin: 0;
     background-color: #F0EBDC;
-    color: #785028;
+    color: #3D4944;
     font-family: Arial, sans-serif;
 }
+
 
 /* Vídeo inicial */
 
@@ -17,7 +23,7 @@ body {
     width: 100%;
     height: 450px;
     overflow: hidden;
-    background-color: #A09B69;
+    background-color: #97CBB7;
 }
 
 .video-inicial video {
@@ -27,51 +33,86 @@ body {
     display: block;
 }
 
+
 /* Seção Sobre */
 
 #sobre {
-    background-color: #F0EBDC;
-    padding: 75px 20px 85px;
-    text-align: center;
-    color: #785028;
+    background-color: #FFFFFF;
+    padding: 85px 10% 95px;
 }
 
+
+/* Título da seção */
+
 #sobre h1 {
-    color: #785028;
-    font-size: 34px;
-    line-height: 1.4;
-    margin: 0 auto 35px;
+    color: #4C9C9B;
+    font-size: 38px;
+    line-height: 1.3;
     max-width: 800px;
+    margin: 0 auto 25px;
+    text-align: left;
 }
+
+
+/* Detalhe rosa abaixo do título */
+
+#sobre h1::after {
+    content: "";
+    display: block;
+    width: 75px;
+    height: 4px;
+    background-color: #E2A3A6;
+    margin-top: 22px;
+}
+
 
 /* Textos da seção Sobre */
 
 #sobre p {
-    background-color: #fffdf8;
-    max-width: 850px;
-    margin: 0 auto 20px;
-    padding: 25px 30px;
-    border-radius: 10px;
-    border-left: 5px solid #E6CDC8;
-    font-size: 16px;
+    background-color: transparent;
+    max-width: 800px;
+    margin: 0 auto 22px;
+    padding: 0;
+    border: none;
+    font-size: 17px;
     line-height: 1.9;
-    text-align: justify;
+    text-align: left;
 }
 
-/* Detalhe no último parágrafo */
+
+/* Último parágrafo */
 
 #sobre p:last-child {
-    border-left-color: #E6CDC8;
     margin-bottom: 0;
 }
 
-/* Rolagem suave */
 
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 20px;
-}
+/* Ajustes para celulares */
 
-body {
-    scroll-behavior: smooth;
+@media (max-width: 600px) {
+
+    .video-inicial {
+        height: 300px;
+    }
+
+    #sobre {
+        padding: 55px 22px 65px;
+    }
+
+    #sobre h1 {
+        font-size: 29px;
+        margin-bottom: 25px;
+    }
+
+    #sobre h1::after {
+        width: 60px;
+        margin-top: 18px;
+    }
+
+    #sobre p {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
 }

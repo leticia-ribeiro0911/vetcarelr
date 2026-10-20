@@ -6,7 +6,7 @@
 body {
     margin: 0;
     background-color: #F0EBDC;
-    color: #785028;
+    color: #3D4944;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -20,8 +20,8 @@ body {
 }
 
 .aviso-emergencia h2 {
-    font-family: 'Monstserrat', serif;
-    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
 }
 
 /* Conteúdo principal */
@@ -37,15 +37,25 @@ main {
 }
 
 .introducao-agendamento h1 {
-    color: #785028;
+    color: #4C9C9B;
     font-size: 38px;
     margin: 0 0 18px;
+}
+
+.introducao-agendamento h1::after {
+    content: "";
+    display: block;
+    width: 75px;
+    height: 4px;
+    margin: 18px auto 0;
+    background-color: #E2A3A6;
 }
 
 .introducao-agendamento p {
     font-size: 16px;
     line-height: 1.9;
     margin: 0;
+    color: #3D4944;
 }
 
 /* Etapas do agendamento */
@@ -54,7 +64,7 @@ main {
 }
 
 .etapas-agendamento > h2 {
-    color: #785028;
+    color: #4C9C9B;
     font-size: 30px;
     margin: 0 0 25px;
 }
@@ -70,15 +80,15 @@ main {
 .etapa {
     background-color: #FFFFFF;
     padding: 25px;
-    border-radius: 15px;
-    border: 1px solid #E6CDC8;
-    border-bottom: 4px solid #A09B69;
+    border-radius: 10px;
+    border: 1px solid #97CBB7;
+    border-bottom: 4px solid #E2A3A6;
 }
 
 /* Quarta etapa ocupando toda a largura */
 .etapa:nth-child(4) {
     grid-column: 1 / -1;
-    border-bottom-color: #A09B69;
+    border-bottom-color: #E2A3A6;
 }
 
 /* Número da etapa */
@@ -90,7 +100,7 @@ main {
     height: 38px;
     margin-bottom: 18px;
     border-radius: 50%;
-    background-color: #A09B69;
+    background-color: #4C9C9B;
     color: #FFFFFF;
     font-size: 17px;
     font-weight: 700;
@@ -98,7 +108,7 @@ main {
 
 /* Títulos das etapas */
 .etapa h3 {
-    color: #785028;
+    color: #367F7E;
     font-family: 'Montserrat', sans-serif;
     font-size: 17px;
     font-weight: 700;
@@ -108,7 +118,7 @@ main {
 
 /* Textos das etapas */
 .etapa p {
-    color: #785028;
+    color: #3D4944;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     line-height: 1.9;
@@ -121,32 +131,31 @@ main {
     justify-content: center;
     padding: 30px 35px;
     margin-bottom: 50px;
-    background-color: #E6CDC8;
-    border-left: 6px solid #785028;
+    background-color: #ff8585;
+    border-left: 6px solid #ffffff;
     border-radius: 10px;
 }
 
-/* Conteúdo do aviso */
+/* Conteúdo do aviso de urgência */
 .conteudo-emergencia {
     width: 100%;
 }
 
-/* Ícone e título centralizados juntos */
+/* Ícone e título do aviso */
 .aviso-emergencia h2 {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    color: #785028;
-    font-size: 30px;
+    color: #ffffff;
+    font-size: 25px;
     line-height: 1.3;
     margin: 0 0 15px;
     text-align: center;
 }
 
-/* Ícone de exclamação dentro do círculo */
+/* Ícone de urgência */
 .aviso-emergencia h2 i {
-    font-family: 'bootstrap-icons';
     font-size: 27px;
     line-height: 1;
     flex-shrink: 0;
@@ -154,7 +163,7 @@ main {
 
 /* Texto do aviso de urgência */
 .aviso-emergencia p {
-    color: #785028;
+    color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     line-height: 1.9;
@@ -167,24 +176,59 @@ main {
     margin: 0 auto;
     padding: 40px 45px;
     background-color: #FFFFFF;
-    border-radius: 14px;
-    box-shadow: 0 4px 18px rgba(120, 80, 40, 0.08);
+    border: 1px solid #97CBB7;
+    border-top: 5px solid #E2A3A6;
+    border-radius: 10px;
 }
 
 /* Título do formulário */
 .titulo-formulario h2 {
-    color: #785028;
+    color: #4C9C9B;
     font-size: 30px;
     margin: 0 0 12px;
 }
 
 /* Texto do formulário */
 .titulo-formulario p {
-    color: #785028;
+    color: #3D4944;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     line-height: 1.9;
     margin: 0 0 30px;
+}
+
+/* Aviso para quem não está logado */
+.aviso-login {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #F8E5E5;
+    border-left: 5px solid #E2A3A6;
+    border-radius: 7px;
+}
+
+/* Texto do aviso de login */
+.aviso-login p {
+    color: #3D4944;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0 0 15px;
+}
+
+/* Botão para fazer login */
+.botao-login {
+    display: inline-block;
+    padding: 13px 25px;
+    background-color: #4C9C9B;
+    color: #FFFFFF;
+    border-radius: 7px;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.botao-login:hover {
+    background-color: #367F7E;
 }
 
 /* Campos em duas colunas */
@@ -208,7 +252,7 @@ main {
 
 /* Rótulos dos campos */
 .campo label {
-    color: #785028;
+    color: #3D4944;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -220,10 +264,10 @@ main {
 .campo textarea {
     width: 100%;
     padding: 13px 15px;
-    border: 1px solid #D8D0BD;
+    border: 1px solid #97CBB7;
     border-radius: 7px;
-    background-color: #FDFBF6;
-    color: #785028;
+    background-color: #FFFFFF;
+    color: #3D4944;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     outline: none;
@@ -232,15 +276,14 @@ main {
 /* Campos preenchidos automaticamente */
 .campo input[readonly] {
     background-color: #F0EBDC;
-    color: #785028;
+    color: #3D4944;
 }
 
 /* Destaque ao selecionar um campo */
 .campo input:focus,
 .campo select:focus,
 .campo textarea:focus {
-    border-color: #A09B69;
-    box-shadow: 0 0 0 2px rgba(160, 155, 105, 0.15);
+    border-color: #4C9C9B;
 }
 
 /* Área de observações */
@@ -256,8 +299,8 @@ main {
     padding: 15px 28px;
     border: none;
     border-radius: 7px;
-    background-color: #E6CDC8;
-    color: #785028;
+    background-color: #4C9C9B;
+    color: #FFFFFF;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -266,32 +309,16 @@ main {
 }
 
 .botao-agendamento:hover {
-    background-color: #D9B8B1;
-}
-
-/* Botão de login */
-.botao-login {
-    display: inline-block;
-    padding: 13px 25px;
-    background-color: #A09B69;
-    color: #FFFFFF;
-    border-radius: 7px;
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.botao-login:hover {
-    background-color: #858052;
+    background-color: #367F7E;
 }
 
 /* Mensagem de erro */
 .mensagem-erro {
     margin-top: 25px;
     padding: 18px;
-    background-color: #F6E1DC;
-    color: #785028;
-    border-left: 5px solid #B66B5B;
+    background-color: #F8E5E5;
+    color: #3D4944;
+    border-left: 5px solid #E2A3A6;
     border-radius: 7px;
 }
 
@@ -322,27 +349,29 @@ main {
     max-width: 520px;
     padding: 35px;
     background-color: #FFFFFF;
-    border-radius: 14px;
+    border: 2px solid #97CBB7;
+    border-top: 5px solid #E2A3A6;
+    border-radius: 12px;
     text-align: center;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Ícone de sucesso */
 .icone-sucesso {
-    color: #A09B69;
+    color: #4C9C9B;
     font-size: 45px;
 }
 
 /* Título do pop-up */
 .pop-up h2 {
-    color: #A09B69;
+    color: #4C9C9B;
     font-size: 30px;
     margin: 15px 0;
 }
 
 /* Textos do pop-up */
 .pop-up p {
-    color: #785028;
+    color: #3D4944;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     line-height: 1.9;
@@ -350,14 +379,14 @@ main {
 
 /* Link de contato */
 .link-contato {
-    color: #A09B69;
+    color: #4C9C9B;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     text-decoration: none;
 }
 
 .link-contato:hover {
-    color: #785028;
+    color: #D18489;
 }
 
 /* Botão de voltar ao início */
@@ -365,7 +394,7 @@ main {
     display: inline-block;
     margin: 15px 0 20px;
     padding: 13px 20px;
-    background-color: #A09B69;
+    background-color: #4C9C9B;
     color: #FFFFFF;
     border-radius: 7px;
     font-family: 'Montserrat', sans-serif;
@@ -376,19 +405,20 @@ main {
 }
 
 .botao-inicio:hover {
-    background-color: #858052;
+    background-color: #367F7E;
 }
 
 /* Aviso dentro do pop-up */
 .aviso {
     padding: 18px;
     background-color: #F0EBDC;
+    border-left: 4px solid #E2A3A6;
     border-radius: 8px;
     text-align: left;
 }
 
 .aviso h3 {
-    color: #785028;
+    color: #367F7E;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     font-weight: 700;
@@ -402,12 +432,85 @@ main {
 }
 
 /* Rolagem suave */
-
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 20px;
 }
 
-body {
-    scroll-behavior: smooth;
+/* Tablets */
+@media (max-width: 800px) {
+
+    main {
+        padding: 40px 5% 55px;
+    }
+
+    .etapas-conteudo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .etapa:nth-child(4) {
+        grid-column: auto;
+    }
+
+    .secao-formulario {
+        padding: 30px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 550px) {
+
+    main {
+        padding: 32px 6% 45px;
+    }
+
+    .introducao-agendamento h1 {
+        font-size: 31px;
+    }
+
+    .introducao-agendamento p {
+        font-size: 14px;
+    }
+
+    .etapas-conteudo {
+        grid-template-columns: 1fr;
+    }
+
+    .etapas-agendamento > h2,
+    .titulo-formulario h2 {
+        font-size: 26px;
+    }
+
+    .aviso-emergencia {
+        padding: 25px 20px;
+    }
+
+    .aviso-emergencia h2 {
+        font-size: 22px;
+    }
+
+    .secao-formulario {
+        padding: 25px 20px;
+    }
+
+    .campos-formulario {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .campo-observacoes {
+        grid-column: auto;
+    }
+
+    .botao-agendamento {
+        width: 100%;
+    }
+
+    .pop-up {
+        padding: 25px 20px;
+    }
+
+    .pop-up h2 {
+        font-size: 26px;
+    }
 }

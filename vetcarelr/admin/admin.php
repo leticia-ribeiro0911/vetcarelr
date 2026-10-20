@@ -1,6 +1,31 @@
 <?php
 require_once __DIR__ . '/../includes/functions.php';
+
+$erro = "";
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    $email = $_POST['email'];
+
+    $funcionario = consultafunc($conexao, $email);
+
+    if ($funcionario && $funcionario['email'] == $email && $funcionario['senha'] == $_POST['senha']) {
+
+        session_start();
+
+        $_SESSION['id'] = $funcionario['id'];
+
+        header("Location: /vetcarelr/admin/inicio.php");
+        exit();
+
+    } else {
+
+        $erro = "E-mail ou senha inválidos.";
+
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,10 +33,12 @@ require_once __DIR__ . '/../includes/functions.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../css/login.css">
-
     <title>VetCare LR - Login Admin</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admfo.css">
 </head>
 
 <body>
@@ -20,48 +47,44 @@ require_once __DIR__ . '/../includes/functions.php';
 
         <section class="conteudo-login">
 
-            <h1>Bem-vindo(a)!</h1>
-            <h2>Faça login para acessar o painel administrativo</h2>
+            <div class="imagem-login">
 
-            <form action="" method="post">
+                <img src="../imagens/admin.jpg" alt="Atendimento veterinário">
 
-                <label for="email">E-mail</label>
-                <input type="text" name="email" id="email" placeholder="ex.: email@gmail.com">
+            </div>
 
-                <label for="senha">Senha</label>
-                <input type="password" name="senha" id="senha" placeholder="ex.: suasenha">
+            <div class="formulario-login">
 
-                <input type="submit" value="Entrar" class="botao-login">
+                <h1>Bem-vindo(a)!</h1>
 
-            </form>
+                <h2>Faça login para acessar o painel administrativo.</h2>
 
-            <?php
-            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                <form action="" method="post">
 
-                $email = $_POST['email'];
+                    <label for="email">E-mail</label>
+                    <input type="text" name="email" id="email" placeholder="ex.: email@gmail.com" required>
 
-                $funcionario = consultafunc($conexao, $email);
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" id="senha" placeholder="ex.: suasenha" required>
 
-                if ($funcionario && $funcionario['email'] == $email && $funcionario['senha'] == $_POST['senha']) {
+                    <input type="submit" value="Entrar" class="botao-login">
 
-                    session_start();
+                </form>
 
-                    $_SESSION['id'] = $funcionario['id'];
-
-                   header("Location: /vetcarelr/admin/inicio.php");
-                   exit();
-
-                } else {
-
-                    echo "E-mail ou senha inválidos.";
-
+                <?php
+                if ($erro != "") {
+                    echo "<p class='mensagem-erro'>$erro</p>";
                 }
-            }
-            ?>
-  <?php require_once __DIR__ . '/../includes/admfooter.php'; ?>
+                ?>
+
+            </div>
+
         </section>
 
     </main>
 
+    <?php require_once __DIR__ . '/../includes/admfooter.php'; ?>
+
 </body>
+
 </html>

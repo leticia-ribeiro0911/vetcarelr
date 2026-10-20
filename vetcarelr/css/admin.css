@@ -1,0 +1,164 @@
+/* Página de login administrativo */
+body {
+    margin: 0;
+    background-color: #fffdf5;
+    font-family: 'Montserrat', sans-serif;
+    color: #3D4944;
+}
+
+/* Área principal */
+.pagina-login {
+    min-height: 80vh;
+    padding: 45px 7%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Caixa com a imagem e o formulário */
+.conteudo-login {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #FFFFFF;
+    border: 1px solid #97CBB7;
+    border-top: 5px solid #E2A3A6;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Área da imagem */
+.imagem-login {
+    min-height: 480px;
+    background-color: #97CBB7;
+}
+
+/* Imagem */
+.imagem-login img {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Área do formulário */
+.formulario-login {
+    padding: 45px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Título */
+.formulario-login h1 {
+    margin: 0 0 12px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: #4C9C9B;
+}
+
+/* Subtítulo */
+.formulario-login h2 {
+    margin: 0 0 30px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+/* Formulário */
+.formulario-login form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Textos dos campos */
+.formulario-login label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Campos */
+.formulario-login input[type="text"],
+.formulario-login input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #97CBB7;
+    border-radius: 6px;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+/* Texto de exemplo */
+.formulario-login input::placeholder {
+    color: #777777;
+}
+
+/* Campo selecionado */
+.formulario-login input[type="text"]:focus,
+.formulario-login input[type="password"]:focus {
+    border-color: #4C9C9B;
+}
+
+/* Botão de entrar */
+.botao-login {
+    padding: 13px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 6px;
+    background-color: #4C9C9B;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Efeito do botão */
+.botao-login:hover {
+    background-color: #367F7E;
+}
+
+/* Mensagem de erro */
+.mensagem-erro {
+    margin: 20px 0 0;
+    text-align: center;
+    font-size: 13px;
+    color: #D18489;
+}
+
+/* Ajustes para celulares */
+@media (max-width: 700px) {
+    .pagina-login {
+        padding: 30px 18px;
+    }
+
+    .conteudo-login {
+        grid-template-columns: 1fr;
+    }
+
+    .imagem-login {
+        min-height: 230px;
+        height: 230px;
+    }
+
+    .imagem-login img {
+        min-height: 230px;
+        height: 230px;
+    }
+
+    .formulario-login {
+        padding: 30px 25px;
+    }
+
+    .formulario-login h1 {
+        font-size: 31px;
+    }
+}

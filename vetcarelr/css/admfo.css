@@ -1,0 +1,48 @@
+/* Rodapé administrativo */
+footer {
+    width: 100%;
+    background-color: #4C9C9B;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    border-top: 4px solid #E2A3A6;
+}
+
+/* Conteúdo do rodapé */
+footer div {
+    padding: 15px 30px;
+    text-align: center;
+}
+
+/* Título do rodapé */
+footer h3 {
+    margin: 5px 0 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+/* Textos do rodapé */
+footer p {
+    margin: 5px 0;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #FFFFFF;
+}
+
+/* Última parte do rodapé */
+footer div:last-child {
+    background-color: #367F7E;
+    border-top: 2px solid #E2A3A6;
+}
+
+/* Ajustes para celulares */
+@media (max-width: 600px) {
+    footer div {
+        padding: 15px 20px;
+    }
+
+    footer p {
+        font-size: 11px;
+    }
+}

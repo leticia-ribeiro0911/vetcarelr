@@ -1,0 +1,108 @@
+/* Estilo geral da página */
+body {
+    margin: 0;
+    background-color: #F0EBDC;
+    color: #4C9C9B;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Conteúdo principal */
+main {
+    padding: 40px 6%;
+    min-height: 65vh;
+}
+
+/* Título principal */
+main h1 {
+    color: #4C9C9B;
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+/* Texto de apresentação */
+main > p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Título das solicitações */
+main h2 {
+    color: #4C9C9B;
+    font-size: 22px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* Cartão de cada agendamento */
+main div {
+    background-color: #FFFFFF;
+    border: 1px solid #E2A3A6;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+/* Número do agendamento */
+main h3 {
+    color: #4C9C9B;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Informações do agendamento */
+main div p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 10px 0;
+    overflow-wrap: anywhere;
+}
+
+/* Palavras em destaque */
+main strong {
+    color: #4C9C9B;
+}
+
+/* Formulários dos botões */
+main form {
+    display: inline-block;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+/* Botões */
+main input[type="submit"] {
+    background-color: #4C9C9B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Efeito ao passar o mouse */
+main input[type="submit"]:hover {
+    background-color: #397F7E;
+}
+
+/* Botão de recusar */
+main form:nth-of-type(2) input[type="submit"] {
+    background-color: #E2A3A6;
+}
+
+main form:nth-of-type(2) input[type="submit"]:hover {
+    background-color: #C98287;
+}
+
+/* Linha divisória */
+main hr {
+    border: none;
+    border-top: 1px solid #E2A3A6;
+    margin-top: 25px;
+}

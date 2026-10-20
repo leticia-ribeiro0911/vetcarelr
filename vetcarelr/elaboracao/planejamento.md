@@ -10,8 +10,10 @@
 ---
 - VetCare LR
 - https://chatgpt.com/backend-api/estuary/content?id=file_0000000026f0820e80ea57174c5032f8&ts=497435&p=fs&cid=1&sig=807e106f34c87d38f2dcd29e9e587cbc0b556f14dcc25d4492819b2db5863919&v=0 
-- #A09B69 · #F0EBDC · #785028 · #E6CDC8 · #FAF9F6
-- ITC Batak
+- #FFFFFF, #97CBB7, #E2A3A6, #4C9C9B, #F0EBDC.
+
+- Montserrat, e 
+
 - Minimalista, Acolhedor e Profissional
 - Tutores de animais de pequeno e grande porte que procuram atendimento veterinário e serviços relacionados à saúde e bem-estar de seus bichinhos.
 

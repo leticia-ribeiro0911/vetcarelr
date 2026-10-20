@@ -1,23 +1,18 @@
 <?php
-/*
-Essa parte verifica se o formulário foi enviado e se o tutor está logado.
-Depois, recebe as informações do animal e do atendimento, cadastra o animal
-e registra a solicitação no banco de dados. Os dois cadastros são feitos em
-uma transação, para que sejam confirmados juntos ou desfeitos caso ocorra
-algum erro. Por fim, define uma mensagem de sucesso ou erro para o cliente.
-*/
+// Verifica se o tutor está logado antes de permitir o envio do formulário.
 
 session_start();
 
-require_once __DIR__ . '/includes/functions.php';
+include 'includes/functions.php';
 
 $mensagem = "";
 
-$nome_tutor = $_SESSION['nome'] ?? "";
-$telefone = $_SESSION['telefone'] ?? "";
+$nome_tutor = isset($_SESSION["nome"]) ? $_SESSION["nome"] : "";
+$telefone = isset($_SESSION["telefone"]) ? $_SESSION["telefone"] : "";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
+    // Se não estiver logado, vai para a página de login.
     if (!isset($_SESSION['id'])) {
         header("Location: login/login.php");
         exit();
@@ -32,44 +27,30 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $horario = $_POST['horario'];
     $observacoes = $_POST['observacoes'];
 
-    try {
-        $conexao->beginTransaction();
+    $id_paciente = cadastrarpaciente(
+        $conexao,
+        $nome_animal,
+        $tipo_animal,
+        $id_tutor
+    );
 
-        $id_paciente = cadastrarpaciente(
+    if ($id_paciente) {
+        $resultado = solicitaragendamento(
             $conexao,
-            $nome_animal,
-            $tipo_animal,
-            $id_tutor
+            $id_tutor,
+            $id_paciente,
+            $tipo_atendimento,
+            $data,
+            $horario,
+            $observacoes
         );
 
-        if ($id_paciente) {
-            $resultado = solicitaragendamento(
-                $conexao,
-                $id_tutor,
-                $id_paciente,
-                $tipo_atendimento,
-                $data,
-                $horario,
-                $observacoes
-            );
-
-            if ($resultado) {
-                $conexao->commit();
-                $mensagem = "sucesso";
-            } else {
-                $conexao->rollBack();
-                $mensagem = "erro";
-            }
+        if ($resultado) {
+            $mensagem = "sucesso";
         } else {
-            $conexao->rollBack();
             $mensagem = "erro";
         }
-
-    } catch (PDOException $e) {
-        if ($conexao->inTransaction()) {
-            $conexao->rollBack();
-        }
-
+    } else {
         $mensagem = "erro";
     }
 }
@@ -118,57 +99,81 @@ $tipos_atendimento = [
 
 <body>
 
-    <?php include __DIR__ . '/includes/header.php'; ?>
+    <?php include 'includes/header.php'; ?>
 
     <main>
+
         <section class="introducao-agendamento">
+
             <h1>Agende uma consulta</h1>
+
             <p>
                 Encontre o atendimento ideal para seu animal. <br>
                 Preencha as informações e nossa equipe entrará em contato
                 para conversar sobre a disponibilidade.
             </p>
+
         </section>
 
         <section class="etapas-agendamento">
+
             <h2>Como funciona o agendamento?</h2>
 
             <div class="etapas-conteudo">
+
                 <div class="etapa">
+
                     <span class="numero-etapa">1</span>
+
                     <h3>Faça sua solicitação</h3>
+
                     <p>
                         Preencha o formulário com as informações do animal
                         e o atendimento desejado.
                     </p>
+
                 </div>
 
                 <div class="etapa">
+
                     <span class="numero-etapa">2</span>
+
                     <h3>Aguarde o contato</h3>
+
                     <p>
                         Nossa equipe verificará as informações e conversará
                         com você sobre a disponibilidade.
                     </p>
+
                 </div>
 
                 <div class="etapa">
+
                     <span class="numero-etapa">3</span>
+
                     <h3>Confirme o horário</h3>
+
                     <p>
                         Você receberá a confirmação da data e do horário
                         combinados com a equipe.
                     </p>
+
                 </div>
 
                 <div class="etapa">
+
                     <span class="numero-etapa">4</span>
+
                     <h3>Compareça ao atendimento</h3>
+
                     <p>
                         Com o horário confirmado, compareça ao hospital
                         veterinário na data combinada.
                     </p>
+
                 </div>
+
+            </div>
 
         </section>
 
@@ -207,155 +212,168 @@ $tipos_atendimento = [
 
             </div>
 
+            <!-- Aviso para quem não está logado -->
             <?php if (!isset($_SESSION['id'])) { ?>
 
-            <?php } else { ?>
+                <div class="aviso-login">
 
-                <form action="" method="post">
+                    <p>
+                        Você pode preencher os campos abaixo, mas precisa
+                        entrar na sua conta para enviar a solicitação
+                        de agendamento.
+                    </p>
 
-                    <div class="campos-formulario">
+                    <a href="login/login.php" class="botao-login">
+                        Fazer login
+                    </a>
 
-                        <div class="campo">
+                </div>
 
-                            <label for="nome_tutor">Nome do tutor</label>
+            <?php } ?>
 
-                            <input
-                                type="text"
-                                name="nome_tutor"
-                                id="nome_tutor"
-                                value="<?php echo htmlspecialchars($nome_tutor); ?>"
-                                placeholder="Seu nome completo"
-                            >
+            <form action="" method="post">
 
-                        </div>
+                <div class="campos-formulario">
 
-                        <div class="campo">
+                    <div class="campo">
 
-                            <label for="telefone">Telefone</label>
+                        <label for="nome_tutor">Nome do tutor</label>
 
-                            <input
-                                type="tel"
-                                name="telefone"
-                                id="telefone"
-                                value="<?php echo htmlspecialchars($telefone); ?>"
-                                placeholder="Seu telefone"
-                            >
-
-                        </div>
-
-                        <div class="campo">
-
-                            <label for="nome_animal">Nome do animal</label>
-
-                            <input
-                                type="text"
-                                name="nome_animal"
-                                id="nome_animal"
-                                placeholder="Digite o nome do animal"
-                                required
-                            >
-
-                        </div>
-
-                        <div class="campo">
-
-                            <label for="tipo_animal">Tipo de animal</label>
-
-                            <select
-                                name="tipo_animal"
-                                id="tipo_animal"
-                                required
-                            >
-
-                                <option value="">Selecione</option>
-
-                                <?php foreach ($tipos_animal as $tipo) { ?>
-
-                                    <option value="<?php echo htmlspecialchars($tipo); ?>">
-                                        <?php echo htmlspecialchars($tipo); ?>
-                                    </option>
-
-                                <?php } ?>
-
-                            </select>
-
-                        </div>
-
-                        <div class="campo">
-
-                            <label for="tipo_atendimento">
-                                Tipo de atendimento
-                            </label>
-
-                            <select
-                                name="tipo_atendimento"
-                                id="tipo_atendimento"
-                                required
-                            >
-
-                                <option value="">Selecione</option>
-
-                                <?php foreach ($tipos_atendimento as $tipo) { ?>
-
-                                    <option value="<?php echo htmlspecialchars($tipo); ?>">
-                                        <?php echo htmlspecialchars($tipo); ?>
-                                    </option>
-
-                                <?php } ?>
-
-                            </select>
-
-                        </div>
-
-                        <div class="campo">
-
-                            <label for="data">Data desejada</label>
-
-                            <input
-                                type="date"
-                                name="data"
-                                id="data"
-                                min="<?php echo date('Y-m-d'); ?>"
-                                required
-                            >
-
-                        </div>
-
-                        <div class="campo">
-
-                            <label for="horario">Horário desejado</label>
-
-                            <input
-                                type="time"
-                                name="horario"
-                                id="horario"
-                                required
-                            >
-
-                        </div>
-
-                        <div class="campo campo-observacoes">
-
-                            <label for="observacoes">Observações</label>
-
-                            <textarea
-                                name="observacoes"
-                                id="observacoes"
-                                rows="5"
-                                placeholder="Descreva brevemente o motivo do atendimento..."
-                            ></textarea>
-
-                        </div>
+                        <input
+                            type="text"
+                            name="nome_tutor"
+                            id="nome_tutor"
+                            value="<?php echo $nome_tutor; ?>"
+                            placeholder="Seu nome completo"
+                        >
 
                     </div>
 
-                    <button type="submit" class="botao-agendamento">
-                        Solicitar atendimento
-                    </button>
+                    <div class="campo">
 
-                </form>
+                        <label for="telefone">Telefone</label>
 
-            <?php } ?>
+                        <input
+                            type="tel"
+                            name="telefone"
+                            id="telefone"
+                            value="<?php echo $telefone; ?>"
+                            placeholder="Seu telefone"
+                        >
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="nome_animal">Nome do animal</label>
+
+                        <input
+                            type="text"
+                            name="nome_animal"
+                            id="nome_animal"
+                            placeholder="Digite o nome do animal"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="tipo_animal">Tipo de animal</label>
+
+                        <select
+                            name="tipo_animal"
+                            id="tipo_animal"
+                            required
+                        >
+
+                            <option value="">Selecione</option>
+
+                            <?php foreach ($tipos_animal as $tipo) { ?>
+
+                                <option value="<?php echo $tipo; ?>">
+                                    <?php echo $tipo; ?>
+                                </option>
+
+                            <?php } ?>
+
+                        </select>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="tipo_atendimento">
+                            Tipo de atendimento
+                        </label>
+
+                        <select
+                            name="tipo_atendimento"
+                            id="tipo_atendimento"
+                            required
+                        >
+
+                            <option value="">Selecione</option>
+
+                            <?php foreach ($tipos_atendimento as $tipo) { ?>
+
+                                <option value="<?php echo $tipo; ?>">
+                                    <?php echo $tipo; ?>
+                                </option>
+
+                            <?php } ?>
+
+                        </select>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="data">Data desejada</label>
+
+                        <input
+                            type="date"
+                            name="data"
+                            id="data"
+                            min="<?php echo date('Y-m-d'); ?>"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="horario">Horário desejado</label>
+
+                        <input
+                            type="time"
+                            name="horario"
+                            id="horario"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="campo campo-observacoes">
+
+                        <label for="observacoes">Observações</label>
+
+                        <textarea
+                            name="observacoes"
+                            id="observacoes"
+                            rows="5"
+                            placeholder="Descreva brevemente o motivo do atendimento..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" class="botao-agendamento">
+                    Solicitar atendimento
+                </button>
+
+            </form>
 
             <!-- Mensagem de sucesso -->
             <?php if ($mensagem == "sucesso") { ?>
@@ -399,10 +417,7 @@ $tipos_atendimento = [
 
                 </div>
 
-            <?php } 
-            elseif ($mensagem == "erro") 
-            {
-            ?>
+            <?php } elseif ($mensagem == "erro") { ?>
 
                 <div class="mensagem-erro">
 
@@ -421,7 +436,7 @@ $tipos_atendimento = [
 
     </main>
 
-    <?php include __DIR__ . '/includes/footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 
 </body>
 

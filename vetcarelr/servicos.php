@@ -105,7 +105,7 @@
             </div>
 
             <div class="servico">
-                <img src="imagens/castração.webp" alt="Procedimento de castração">
+                <img src="imagens/castracao.jpg" alt="Procedimento de castração">
                 <div class="conteudo-servico">
                     <h2>Castração</h2>
                     <p>Procedimento veterinário realizado após avaliação individual do animal.</p>

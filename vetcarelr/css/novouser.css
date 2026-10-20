@@ -1,0 +1,109 @@
+/* Estilo geral da página */
+body {
+    margin: 0;
+    background-color: #F0EBDC;
+    color: #4C9C9B;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Conteúdo principal */
+main {
+    padding: 40px 6%;
+    min-height: 65vh;
+}
+
+/* Título principal */
+main h1 {
+    color: #4C9C9B;
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+/* Formulário */
+main form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #E2A3A6;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+/* Espaçamento entre os campos */
+main form p {
+    margin: 0 0 20px;
+}
+
+/* Nome dos campos */
+main form label {
+    display: block;
+    color: #4C9C9B;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Campos de preenchimento */
+main form input[type="text"],
+main form input[type="email"],
+main form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #97CBB7;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    color: #4C9C9B;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+/* Destaque ao selecionar um campo */
+main form input:focus {
+    outline: 2px solid #97CBB7;
+}
+
+/* Botão cadastrar */
+main form input[type="submit"] {
+    width: 100%;
+    background-color: #4C9C9B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 13px 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+/* Efeito do botão */
+main form input[type="submit"]:hover {
+    background-color: #397F7E;
+}
+
+/* Mensagem de retorno */
+main > p:first-of-type {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Link para voltar à equipe */
+main > p a {
+    display: inline-block;
+    color: #C98287;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+/* Efeito do link */
+main > p a:hover {
+    text-decoration: underline;
+}

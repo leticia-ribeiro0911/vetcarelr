@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/vetcarelr/css/admfo.css">
 <footer>
     <div>
         <p>Sistema de gerenciamento veterinário, dedicado à organização e ao cuidado dos animais.</p>

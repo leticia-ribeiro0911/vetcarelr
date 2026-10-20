@@ -1,12 +1,15 @@
 /* Rodapé */
+
 footer {
     width: 100%;
-    background-color: #A09B69;
-    color: #F0EBDC;
+    background-color: #4C9C9B;
+    color: #FFFFFF;
     font-family: Arial, sans-serif;
+    border-top: 4px solid #E2A3A6;
 }
 
 /* Conteúdo principal */
+
 .footer-conteudo {
     display: flex;
     justify-content: space-between;
@@ -16,6 +19,7 @@ footer {
 }
 
 /* Colunas */
+
 .footer-sobre,
 .footer-contato {
     display: flex;
@@ -24,11 +28,13 @@ footer {
 }
 
 /* Apresentação */
+
 .footer-sobre {
     max-width: 400px;
 }
 
 /* Títulos */
+
 .footer-conteudo h3 {
     color: #FFFFFF;
     font-size: 19px;
@@ -36,15 +42,18 @@ footer {
 }
 
 /* Textos */
+
 .footer-conteudo p {
+    color: #FFFFFF;
     font-size: 15px;
     line-height: 1.8;
     margin: 0;
 }
 
 /* Fale conosco */
+
 .footer-contato a {
-    color: #E6CDC8;
+    color: #FFFFFF;
     text-decoration: none;
     font-size: 15px;
     font-weight: bold;
@@ -52,16 +61,22 @@ footer {
     transition: color 0.3s ease;
 }
 
+/* Efeito ao passar o mouse */
+
 .footer-contato a:hover {
-    color: #F0EBDC;
+    color: #E2A3A6;
 }
 
 /* Faixa inferior */
+
 .footer-final {
-    background-color: #785028;
+    background-color: #367F7E;
+    border-top: 2px solid #E2A3A6;
     padding: 18px 20px;
     text-align: center;
 }
+
+/* Imagem redonda */
 
 .imagebola {
     width: 100px;
@@ -69,6 +84,8 @@ footer {
     border-radius: 50%;
     object-fit: cover;
 }
+
+/* Logo */
 
 .footer-logo img {
     height: 65px;
@@ -78,20 +95,10 @@ footer {
 }
 
 /* Direitos autorais */
+
 .footer-final p {
-    color: #F0EBDC;
+    color: #FFFFFF;
     font-size: 13px;
     line-height: 1.6;
     margin: 0;
-}
-
-/* Rolagem suave */
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 20px;
-}
-
-body {
-    scroll-behavior: smooth;
 }

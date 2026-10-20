@@ -1,0 +1,137 @@
+/* Estilo geral da página */
+body {
+    margin: 0;
+    background-color: #F0EBDC;
+    color: #4C9C9B;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Conteúdo principal */
+main {
+    padding: 40px 6%;
+    min-height: 65vh;
+}
+
+/* Título principal */
+main h1 {
+    color: #4C9C9B;
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+/* Texto de apresentação */
+main > p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Formulário */
+main form {
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #E2A3A6;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+/* Títulos das seções */
+main form h2 {
+    color: #4C9C9B;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 22px;
+}
+
+/* Rótulos dos campos */
+main form label {
+    display: block;
+    color: #4C9C9B;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Campos de texto e lista de opções */
+main form input[type="text"],
+main form input[type="tel"],
+main form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #97CBB7;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    color: #4C9C9B;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* Destaque ao selecionar um campo */
+main form input:focus,
+main form select:focus {
+    outline: 2px solid #97CBB7;
+}
+
+/* Separação entre tutor e paciente */
+main form hr {
+    border: none;
+    border-top: 1px solid #E2A3A6;
+    margin: 10px 0 25px;
+}
+
+/* Botão cadastrar */
+main form input[type="submit"] {
+    background-color: #4C9C9B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Efeito do botão cadastrar */
+main form input[type="submit"]:hover {
+    background-color: #397F7E;
+}
+
+/* Link cancelar */
+main form a {
+    display: inline-block;
+    color: #C98287;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+/* Efeito do link cancelar */
+main form a:hover {
+    text-decoration: underline;
+}
+
+/* Mensagem de cadastro realizado */
+main > p:has(+ p a[href="pacientes.php"]) {
+    background-color: #FFFFFF;
+    border: 1px solid #97CBB7;
+    border-radius: 8px;
+    padding: 18px;
+    max-width: 650px;
+    box-sizing: border-box;
+}
+
+/* Link para voltar aos pacientes */
+main > p a {
+    color: #4C9C9B;
+    font-size: 13px;
+    font-weight: 600;
+}
