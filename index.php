@@ -9,7 +9,7 @@
 
     <title>VetCare LR - Início</title>
 
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="/vetcarelr/css/index.css">
 
 </head>
 
@@ -22,7 +22,7 @@
         <section class="video-inicial">
 
     <video autoplay muted loop playsinline>
-        <source src="videos/vetcarev.mp4" type="video/mp4">
+        <source src="/vetcarelr/videos/vetcarev.mp4" type="video/mp4">
     </video>
 
         </section>
