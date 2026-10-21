@@ -5,7 +5,7 @@
 
         <div class="footer-sobre">
             <div class="footer-logo">
-    <img src="/vetcarelr/imagens/logoVetCare.png" class="imagebola" alt="VetCare LR">
+    <img src="/vetcarelr/imagens/logoVetCare.jpg" class="imagebola" alt="VetCare LR">
         </div>
             <p>Cuidado, respeito e atenção à saúde e ao bem-estar dos animais de todos os portes.</p>
         </div>

@@ -159,8 +159,7 @@ function consultatutor($conexao, $cpf){
 
 // Função para cadastrar o animal do tutor durante a solicitação de agendamento.
 function cadastrarpaciente($conexao, $nome, $tipo_animal, $id_tutor) {
-    $sql = "INSERT INTO pacientes (nome, tipo_animal, id_tutor) VALUES (:nome, :tipo_animal, :id_tutor)
-    RETURNING id";
+    $sql = "INSERT INTO pacientes (nome, tipo_animal, id_tutor, origem_cadastro) VALUES (:nome,  :tipo_animal, :id_tutor, 'site') RETURNING id";
 
     try {
         $stmt = $conexao->prepare($sql);
@@ -346,49 +345,6 @@ function excluirfunc($conexao, $id) {
 
     } catch (PDOException $e) {
         echo "Erro ao excluir funcionário: " . $e->getMessage();
-        return false;
-    }
-}
-
-// Função para consultar as informações de contato do hospital.
-function consultarconfig($conexao) {
-    $sql = "SELECT * FROM configuracoes WHERE id = 1";
-
-    try {
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute();
-
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-
-    } catch (PDOException $e) {
-        echo "Erro ao consultar configurações: " . $e->getMessage();
-        return false;
-    }
-}
-
-// Função para atualizar as informações de contato do hospital.
-function atualizarconfig($conexao, $horario, $localizacao, $telefone, $email) {
-    $sql = "UPDATE configuracoes
-            SET horario_atendimento = :horario,
-                localizacao = :localizacao,
-                telefone = :telefone,
-                email = :email
-            WHERE id = 1";
-
-    try {
-        $stmt = $conexao->prepare($sql);
-
-        $stmt->bindParam(":horario", $horario);
-        $stmt->bindParam(":localizacao", $localizacao);
-        $stmt->bindParam(":telefone", $telefone);
-        $stmt->bindParam(":email", $email);
-
-        $stmt->execute();
-
-        return true;
-
-    } catch (PDOException $e) {
-        echo "Erro ao atualizar configurações: " . $e->getMessage();
         return false;
     }
 }

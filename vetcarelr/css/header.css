@@ -1,13 +1,12 @@
 /* Cabeçalho */
-
 header {
     width: 100%;
     background-color: #4C9C9B;
     border-bottom: 4px solid #E2A3A6;
+    box-sizing: border-box;
 }
 
 /* Menu de navegação */
-
 header nav {
     width: 100%;
     min-height: 120px;
@@ -16,108 +15,131 @@ header nav {
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    gap: 30px;
+    gap: 25px;
 }
 
 /* Grupo principal de links */
-
 header nav .menu-principal {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex: 1;
-    gap: 25px;
+    gap: 20px;
 }
 
 /* Logo */
-
 header nav .logo-vetcare {
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    margin-right: 15px;
 }
 
-header nav .logo-vetcare img {
-    height: 95px;
-    width: auto;
-    object-fit: contain;
+/* Imagem redonda da logo */
+.imagebola {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    object-fit: cover;
     display: block;
+    border: 2px solid #F0EBDC;
 }
 
-/* Links do menu */
-
-header nav a {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: color 0.3s ease;
-}
-
-/* Efeito ao passar o mouse */
-
-header nav a:hover {
-    color: #E2A3A6;
-}
-
-/* Ícones com texto abaixo */
-
+/* Links com ícones */
 header nav a.link-icone {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 7px;
+    min-width: 65px;
     color: #FFFFFF;
     text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 /* Ícones */
-
 header nav a.link-icone i {
     font-size: 23px;
-    vertical-align: middle;
+    line-height: 1;
 }
 
 /* Textos abaixo dos ícones */
-
 header nav a.link-icone span {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
+    white-space: nowrap;
 }
 
-/* Efeito ao passar o mouse nos ícones */
-
+/* Efeito ao passar o mouse */
 header nav a.link-icone:hover {
-    color: #E2A3A6;
+    color: #F0EBDC;
+    transform: translateY(-2px);
 }
 
-/* Grupo do ícone de sair */
-
+/* Grupo do botão sair */
 header nav .menu-sair {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
-/* Alinhamento do ícone de sair */
+/* Ajuste para telas menores */
+@media (max-width: 950px) {
+    header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
 
-header nav .menu-sair a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    header nav .menu-principal {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 22px;
+    }
+
+    header nav .logo-vetcare {
+        margin-right: 5px;
+    }
+
+    header nav .menu-sair {
+        margin-left: 0;
+    }
 }
 
-/* Imagem redonda */
+/* Ajuste para celulares */
+@media (max-width: 480px) {
+    header nav {
+        padding: 18px 12px;
+    }
 
-.imagebola {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
+    header nav .menu-principal {
+        gap: 20px 16px;
+    }
+
+    header nav .logo-vetcare {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 5px;
+    }
+
+    .imagebola {
+        width: 72px;
+        height: 72px;
+    }
+
+    header nav a.link-icone {
+        min-width: 65px;
+    }
+
+    header nav a.link-icone i {
+        font-size: 21px;
+    }
+
+    header nav a.link-icone span {
+        font-size: 10px;
+    }
 }

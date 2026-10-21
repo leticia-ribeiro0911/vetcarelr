@@ -84,3 +84,10 @@ header nav .menu-sair {
     flex-shrink: 0;
     margin-left: 5px;
 }
+
+.imagebola {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}

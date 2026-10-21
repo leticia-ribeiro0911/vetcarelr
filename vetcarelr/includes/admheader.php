@@ -8,7 +8,7 @@
 
             <!-- Logo do VetCare LR -->
             <a href="/vetcarelr/admin/inicio.php">
-                <img src="/vetcarelr/imagens/logoVetCare.png" class="imagebola" alt="Logo VetCare LR">
+                <img src="/vetcarelr/imagens/logoVetCare.jpg" class="imagebola" alt="Logo VetCare LR">
             </a>
 
             <!-- Início -->

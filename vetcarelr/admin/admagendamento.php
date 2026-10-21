@@ -4,8 +4,8 @@ require_once __DIR__ . '/../includes/functions.php';
 // Guarda a mensagem que aparece na tela
 $mensagem = "";
 
-// Verifica se foi clicado em confirmar ou recusar
-if (isset($_POST['acao']) && isset($conexao)) {
+// Verifica se foi clicado em confirmar, recusar ou excluir
+if (isset($_POST['acao']) && isset($_POST['id']) && isset($conexao)) {
 
     $id = $_POST['id'];
 
@@ -32,6 +32,17 @@ if (isset($_POST['acao']) && isset($conexao)) {
         $consulta->execute();
 
         $mensagem = "Agendamento recusado com sucesso!";
+
+    } elseif ($_POST['acao'] == "excluir") {
+
+        // Exclui somente o agendamento selecionado
+        $sql = "DELETE FROM agendamentos WHERE id = :id";
+
+        $consulta = $conexao->prepare($sql);
+        $consulta->bindParam(":id", $id);
+        $consulta->execute();
+
+        $mensagem = "Agendamento excluído com sucesso!";
     }
 }
 
@@ -97,82 +108,130 @@ if (isset($conexao)) {
 
                     <h3>Agendamento nº <?php echo $agendamento['id']; ?></h3>
 
-                    <p>
-                        <strong>Tutor:</strong>
-                        <?php echo $agendamento['nome_tutor']; ?>
-                    </p>
+                    <div class="colunas-agendamento">
 
-                    <p>
-                        <strong>Telefone do tutor:</strong>
-                        <?php echo $agendamento['telefone_tutor']; ?>
-                    </p>
+                        <!-- Coluna esquerda: dados do paciente -->
+                        <div class="coluna-agendamento">
 
-                    <p>
-                        <strong>Paciente:</strong>
-                        <?php echo $agendamento['nome_paciente']; ?>
-                    </p>
+                            <h4>Dados do paciente</h4>
+                            <hr>
 
-                    <p>
-                        <strong>Tipo de animal:</strong>
-                        <?php echo $agendamento['tipo_animal']; ?>
-                    </p>
+                            <p>
+                                <strong>Tutor:</strong>
+                                <?php echo $agendamento['nome_tutor']; ?>
+                            </p>
 
-                    <p>
-                        <strong>Tipo de atendimento:</strong>
-                        <?php echo $agendamento['tipo_atendimento']; ?>
-                    </p>
+                            <p>
+                                <strong>Telefone:</strong>
+                                <?php echo $agendamento['telefone_tutor']; ?>
+                            </p>
 
-                    <p>
-                        <strong>Data:</strong>
-                        <?php echo $agendamento['data']; ?>
-                    </p>
+                            <p>
+                                <strong>Paciente:</strong>
+                                <?php echo $agendamento['nome_paciente']; ?>
+                            </p>
 
-                    <p>
-                        <strong>Horário:</strong>
-                        <?php echo $agendamento['horario']; ?>
-                    </p>
+                            <p>
+                                <strong>Tipo de animal:</strong>
+                                <?php echo $agendamento['tipo_animal']; ?>
+                            </p>
 
-                    <p>
-                        <strong>Observações:</strong>
-                        <?php
-                        if ($agendamento['observacoes'] != "") {
-                            echo $agendamento['observacoes'];
-                        } else {
-                            echo "Nenhuma observação.";
-                        }
-                        ?>
-                    </p>
+                            <p><strong>Status</strong></p>
 
-                    <p>
-                        <strong>Status:</strong>
-                        <?php echo $agendamento['status']; ?>
-                    </p>
+                            <?php if ($agendamento['status'] == "pendente") { ?>
 
-                    <?php if ($agendamento['status'] == "pendente") { ?>
+                                <span class="status-agendamento status-pendente">
+                                    <i class="bi bi-clock"></i> Pendente
+                                </span>
 
-                        <form action="" method="post">
+                            <?php } elseif ($agendamento['status'] == "confirmado") { ?>
+
+                                <span class="status-agendamento status-confirmado">
+                                    <i class="bi bi-check-circle"></i> Confirmado
+                                </span>
+
+                            <?php } elseif ($agendamento['status'] == "recusado") { ?>
+
+                                <span class="status-agendamento status-recusado">
+                                    <i class="bi bi-x-circle"></i> Recusado
+                                </span>
+
+                            <?php } ?>
+
+                        </div>
+
+                        <!-- Coluna direita: detalhes do atendimento -->
+                        <div class="coluna-agendamento">
+
+                            <h4>Detalhes do atendimento</h4>
+                            <hr>
+
+                            <p>
+                                <strong>Tipo de atendimento:</strong>
+                                <?php echo $agendamento['tipo_atendimento']; ?>
+                            </p>
+
+                            <p>
+                                <strong>Data:</strong>
+                                <?php echo $agendamento['data']; ?>
+                            </p>
+
+                            <p>
+                                <strong>Horário:</strong>
+                                <?php echo $agendamento['horario']; ?>
+                            </p>
+
+                            <p>
+                                <strong>Observações:</strong>
+                                <?php
+                                if ($agendamento['observacoes'] != "") {
+                                    echo $agendamento['observacoes'];
+                                } else {
+                                    echo "Nenhuma observação.";
+                                }
+                                ?>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Botões de ações -->
+                    <div class="botoes-agendamento">
+
+                        <?php if ($agendamento['status'] == "pendente") { ?>
+
+                            <form action="" method="post">
+
+                                <input type="hidden" name="id" value="<?php echo $agendamento['id']; ?>">
+                                <input type="hidden" name="acao" value="confirmar">
+
+                                <input type="submit" value="Confirmar agendamento">
+
+                            </form>
+
+                            <form action="" method="post" class="botao-recusar">
+
+                                <input type="hidden" name="id" value="<?php echo $agendamento['id']; ?>">
+                                <input type="hidden" name="acao" value="recusar">
+
+                                <input type="submit" value="Recusar agendamento">
+
+                            </form>
+
+                        <?php } ?>
+
+                        <form action="" method="post" class="botao-excluir"
+                            onsubmit="return confirm('Tem certeza de que deseja excluir este agendamento? Essa ação não poderá ser desfeita.');">
 
                             <input type="hidden" name="id" value="<?php echo $agendamento['id']; ?>">
+                            <input type="hidden" name="acao" value="excluir">
 
-                            <input type="hidden" name="acao" value="confirmar">
-
-                            <input type="submit" value="Confirmar agendamento">
+                            <input type="submit" value="Excluir agendamento">
 
                         </form>
 
-                        <form action="" method="post">
-
-                            <input type="hidden" name="id" value="<?php echo $agendamento['id']; ?>">
-
-                            <input type="hidden" name="acao" value="recusar">
-
-                            <input type="submit" value="Recusar agendamento">
-
-                        </form>
-
-                    <?php } ?>
-
-                    <hr>
+                    </div>
 
                 </div>
 

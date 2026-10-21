@@ -1,0 +1,143 @@
+/* Estilo geral da página */
+body {
+    margin: 0;
+    background-color: #F0EBDC;
+    color: #356F70;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Área principal */
+main {
+    min-height: 65vh;
+    padding: 50px 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Cartão do formulário */
+.cartao-edicao {
+    background-color: #FFFFFF;
+    width: 100%;
+    max-width: 600px;
+    padding: 35px;
+    border: 1px solid #E2D3C6;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+/* Título */
+.cartao-edicao h1 {
+    color: #397F7E;
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+/* Texto de introdução */
+.texto-introducao {
+    color: #4A6462;
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+/* Campos do formulário */
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Textos acima dos campos */
+.campo-formulario label {
+    color: #397F7E;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Campos de texto e seleção */
+.campo-formulario input,
+.campo-formulario select {
+    width: 100%;
+    padding: 12px;
+    background-color: #FDFBF7;
+    color: #356F70;
+    border: 1px solid #D6DCD5;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+/* Destaque ao selecionar um campo */
+.campo-formulario input:focus,
+.campo-formulario select:focus {
+    outline: none;
+    border-color: #4C9C9B;
+}
+
+/* Área dos botões */
+.botoes-edicao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+/* Estilo comum dos botões */
+.botao-cancelar,
+.botao-salvar {
+    display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* Botão cancelar */
+.botao-cancelar {
+    background-color: #DCEBE8;
+    color: #316C68;
+}
+
+.botao-cancelar:hover {
+    background-color: #C5DFD9;
+}
+
+/* Botão salvar */
+.botao-salvar {
+    background-color: #4C9C9B;
+    color: #FFFFFF;
+}
+
+.botao-salvar:hover {
+    background-color: #397F7E;
+}
+
+/* Mensagem de erro */
+.mensagem-erro {
+    background-color: #FBE5E5;
+    color: #B42332;
+    border: 1px solid #F0C4C7;
+    border-radius: 6px;
+    padding: 14px;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+

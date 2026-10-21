@@ -14,8 +14,8 @@ if (isset($_POST['cadastrar'])) {
     $tipo_animal = $_POST['tipo_animal'];
 
     // Cadastra o tutor
-    $sql = "INSERT INTO tutores_adm (nome, telefone, cpf)
-            VALUES (:nome, :telefone, :cpf)
+    $sql = "INSERT INTO tutores (nome, telefone, cpf, senha)
+            VALUES (:nome, :telefone, NULLIF(:cpf, ''), '')
             RETURNING id";
 
     $consulta = $conexao->prepare($sql);
@@ -29,9 +29,10 @@ if (isset($_POST['cadastrar'])) {
     // Guarda o ID do tutor cadastrado
     $id_tutor = $consulta->fetchColumn();
 
-    // Cadastra o paciente relacionado ao tutor
-    $sql = "INSERT INTO pacientes_adm (nome, tipo_animal, id_tutor)
-            VALUES (:nome, :tipo_animal, :id_tutor)";
+    // Cadastra o paciente como presencial
+    $sql = "INSERT INTO pacientes
+            (nome, tipo_animal, id_tutor, origem_cadastro)
+            VALUES (:nome, :tipo_animal, :id_tutor, 'presencial')";
 
     $consulta = $conexao->prepare($sql);
 
@@ -111,7 +112,6 @@ if (isset($_POST['cadastrar'])) {
                     <option value="Gato">Gato</option>
                     <option value="Bovino">Bovino</option>
                     <option value="Equino">Equino</option>
-                    <option value="Outro">Outro</option>
                 </select>
 
                 <br><br>

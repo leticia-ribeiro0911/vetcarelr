@@ -51,18 +51,6 @@ Guarda os dados dos funcionários do hospital.
 | telefone | VARCHAR | Telefone do funcionário. |
 | senha | VARCHAR | Senha de acesso. |
 
-## 5. Tabela CONFIGURACOES
-
-Guarda as informações do hospital veterinário.
-
-| Campo | Tipo | Descrição |
-|---|---|---|
-| id | INT | Código da configuração (PK). |
-| horario_atendimento | VARCHAR | Horário de funcionamento. |
-| localizacao | VARCHAR | Endereço do hospital. |
-| telefone | VARCHAR | Telefone para contato. |
-| email | VARCHAR | E-mail para contato. |
-
 ## Legenda
 
 - PK: chave primária.

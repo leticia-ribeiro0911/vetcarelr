@@ -5,70 +5,69 @@ require_once __DIR__ . '/../includes/functions.php';
 $id_site = "";
 $id_adm = "";
 
-// Verifica a busca dos cadastros pelo site
+// Verifica se foi digitado um ID na busca
 if (isset($_GET['id_site'])) {
     $id_site = $_GET['id_site'];
 }
 
-// Verifica a busca dos cadastros presenciais
 if (isset($_GET['id_adm'])) {
     $id_adm = $_GET['id_adm'];
 }
 
-// Cria as listas de pacientes
+// Guarda os pacientes encontrados
 $pacientes_site = [];
 $pacientes_adm = [];
 
-// Consulta os cadastros pelo site
-if (isset($conexao)) {
+// Busca os pacientes cadastrados pelo site
+$sql = "SELECT pacientes.id, pacientes.nome AS nome_paciente,
+        pacientes.tipo_animal, pacientes.origem_cadastro,
+        pacientes.status, tutores.id AS id_tutor,
+        tutores.nome AS nome_tutor, tutores.telefone
+        FROM pacientes
+        INNER JOIN tutores ON pacientes.id_tutor = tutores.id
+        WHERE pacientes.origem_cadastro = 'site'";
 
-    $sql = "SELECT pacientes.id, pacientes.nome AS nome_paciente,
-            pacientes.tipo_animal, tutores.id AS id_tutor,
-            tutores.nome AS nome_tutor, tutores.telefone
-            FROM pacientes
-            INNER JOIN tutores ON pacientes.id_tutor = tutores.id";
-
-    if ($id_site != "") {
-        $sql = $sql . " WHERE pacientes.id = :id";
-    }
-
-    $sql = $sql . " ORDER BY pacientes.id";
-
-    $consulta = $conexao->prepare($sql);
-
-    if ($id_site != "") {
-        $consulta->bindParam(':id', $id_site);
-    }
-
-    $consulta->execute();
-
-    $pacientes_site = $consulta->fetchAll(PDO::FETCH_ASSOC);
-
-
-    // Consulta os cadastros presenciais
-    $sql = "SELECT pacientes_adm.id, pacientes_adm.nome AS nome_paciente,
-            pacientes_adm.tipo_animal, tutores_adm.id AS id_tutor,
-            tutores_adm.nome AS nome_tutor, tutores_adm.telefone
-            FROM pacientes_adm
-            INNER JOIN tutores_adm
-            ON pacientes_adm.id_tutor = tutores_adm.id";
-
-    if ($id_adm != "") {
-        $sql = $sql . " WHERE pacientes_adm.id = :id";
-    }
-
-    $sql = $sql . " ORDER BY pacientes_adm.id";
-
-    $consulta = $conexao->prepare($sql);
-
-    if ($id_adm != "") {
-        $consulta->bindParam(':id', $id_adm);
-    }
-
-    $consulta->execute();
-
-    $pacientes_adm = $consulta->fetchAll(PDO::FETCH_ASSOC);
+if ($id_site != "") {
+    $sql = $sql . " AND pacientes.id = :id";
 }
+
+$sql = $sql . " ORDER BY pacientes.id";
+
+$consulta = $conexao->prepare($sql);
+
+if ($id_site != "") {
+    $consulta->bindParam(':id', $id_site);
+}
+
+$consulta->execute();
+
+$pacientes_site = $consulta->fetchAll(PDO::FETCH_ASSOC);
+
+
+// Busca os pacientes cadastrados presencialmente
+$sql = "SELECT pacientes.id, pacientes.nome AS nome_paciente,
+        pacientes.tipo_animal, pacientes.origem_cadastro,
+        pacientes.status, tutores.id AS id_tutor,
+        tutores.nome AS nome_tutor, tutores.telefone
+        FROM pacientes
+        INNER JOIN tutores ON pacientes.id_tutor = tutores.id
+        WHERE pacientes.origem_cadastro = 'presencial'";
+
+if ($id_adm != "") {
+    $sql = $sql . " AND pacientes.id = :id";
+}
+
+$sql = $sql . " ORDER BY pacientes.id";
+
+$consulta = $conexao->prepare($sql);
+
+if ($id_adm != "") {
+    $consulta->bindParam(':id', $id_adm);
+}
+
+$consulta->execute();
+
+$pacientes_adm = $consulta->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -94,12 +93,14 @@ if (isset($conexao)) {
         <p>Consulte os pacientes e seus tutores cadastrados no hospital.</p>
 
         <p>
-            <a href="novopet.php">+ Cadastrar paciente e tutor</a>
+            <a href="novopet.php">+ Novo paciente e tutor</a>
         </p>
 
         <hr>
 
-        <div>
+        <!-- PACIENTES CADASTRADOS PELO SITE -->
+
+        <div class="secao-pacientes">
 
             <h2>Cadastrados pelo site</h2>
 
@@ -119,29 +120,119 @@ if (isset($conexao)) {
 
             </form>
 
-            <br>
-
             <?php if (count($pacientes_site) > 0) { ?>
 
                 <?php foreach ($pacientes_site as $paciente) { ?>
 
-                    <div>
+                    <div class="cartao-paciente">
 
-                        <h2><?php echo $paciente['nome_paciente']; ?></h2>
+                        <!-- DADOS DO PACIENTE E DO TUTOR -->
 
-                        <p>ID do paciente: <?php echo $paciente['id']; ?></p>
+                        <div class="dados-paciente">
 
-                        <p>Tipo de animal: <?php echo $paciente['tipo_animal']; ?></p>
+                            <h2><?php echo $paciente['nome_paciente']; ?></h2>
 
-                        <h3>Dados do tutor</h3>
+                            <p> <strong>ID do paciente: </strong> <?php echo $paciente['id']; ?> </p>
 
-                        <p>ID do tutor: <?php echo $paciente['id_tutor']; ?></p>
+                            <p> <strong>Tipo de animal: </strong> <?php echo $paciente['tipo_animal']; ?> </p>
 
-                        <p>Nome: <?php echo $paciente['nome_tutor']; ?></p>
+                            <p> <strong>Origem do cadastro: </strong> Site </p>
 
-                        <p>Telefone: <?php echo $paciente['telefone']; ?></p>
+                            <h3>Dados do tutor</h3>
 
-                        <hr>
+                            <p> <strong>ID do tutor: </strong> <?php echo $paciente['id_tutor']; ?> </p>
+
+                            <p> <strong> Nome: </strong><?php echo $paciente['nome_tutor']; ?> </p>
+
+                            <p> <strong> Telefone: </strong> <?php echo $paciente['telefone']; ?> </p>
+
+                        </div>
+
+                        <!-- STATUS NO MEIO DO CARTÃO -->
+
+                        <div class="coluna-status">
+
+                            <h3>Status</h3>
+
+                            <?php if ($paciente['status'] == 'ativo') { ?>
+
+                                <span class="status-paciente status-ativo">
+                                    Ativo
+                                </span>
+
+                            <?php } else { ?>
+
+                                <span class="status-paciente status-inativo">
+                                    Inativo
+                                </span>
+
+                            <?php } ?>
+
+                        </div>
+
+                        <!-- AÇÕES À DIREITA -->
+
+                        <div class="acoes-paciente">
+
+                            <h3>Ações</h3>
+
+                            <a
+                                class="botao-editar"
+                                href="editarpaciente.php?id=<?php echo $paciente['id']; ?>"
+                            >
+                                Editar paciente
+                            </a>
+
+                            <form action="statuspaciente.php" method="post">
+
+                                <input
+                                    type="hidden"
+                                    name="id"
+                                    value="<?php echo $paciente['id']; ?>"
+                                >
+
+                                <?php if ($paciente['status'] == 'ativo') { ?>
+
+                                    <input
+                                        type="hidden"
+                                        name="status"
+                                        value="inativo"
+                                    >
+
+                                    <input
+                                        class="botao-inativar"
+                                        type="submit"
+                                        value="Inativar paciente"
+                                        onclick="return confirm('Deseja inativar este paciente?')"
+                                    >
+
+                                <?php } else { ?>
+
+                                    <input
+                                        type="hidden"
+                                        name="status"
+                                        value="ativo"
+                                    >
+
+                                    <input
+                                        class="botao-ativar"
+                                        type="submit"
+                                        value="Ativar paciente"
+                                        onclick="return confirm('Deseja ativar este paciente?')"
+                                    >
+
+                                <?php } ?>
+
+                            </form>
+
+                            <a
+                                class="botao-excluir"
+                                href="excluirpaciente.php?id=<?php echo $paciente['id']; ?>"
+                            >
+                                Excluir paciente
+                            </a>
+
+                        </div>
 
                     </div>
 
@@ -157,7 +248,9 @@ if (isset($conexao)) {
 
         <hr>
 
-        <div>
+        <!-- PACIENTES CADASTRADOS PRESENCIALMENTE -->
+
+        <div class="secao-pacientes">
 
             <h2>Cadastrados presencialmente</h2>
 
@@ -177,29 +270,134 @@ if (isset($conexao)) {
 
             </form>
 
-            <br>
-
             <?php if (count($pacientes_adm) > 0) { ?>
 
                 <?php foreach ($pacientes_adm as $paciente) { ?>
 
-                    <div>
+                    <div class="cartao-paciente">
 
-                        <h2><?php echo $paciente['nome_paciente']; ?></h2>
+                        <!-- DADOS DO PACIENTE E DO TUTOR -->
 
-                        <p>ID do paciente: <?php echo $paciente['id']; ?></p>
+                        <div class="dados-paciente">
 
-                        <p>Tipo de animal: <?php echo $paciente['tipo_animal']; ?></p>
+                            <h2><?php echo $paciente['nome_paciente']; ?></h2>
 
-                        <h3>Dados do tutor</h3>
+                            <p>
+                                ID do paciente:
+                                <?php echo $paciente['id']; ?>
+                            </p>
 
-                        <p>ID do tutor: <?php echo $paciente['id_tutor']; ?></p>
+                            <p>
+                                Tipo de animal:
+                                <?php echo $paciente['tipo_animal']; ?>
+                            </p>
 
-                        <p>Nome: <?php echo $paciente['nome_tutor']; ?></p>
+                            <p>Origem do cadastro: Presencial</p>
 
-                        <p>Telefone: <?php echo $paciente['telefone']; ?></p>
+                            <h3>Dados do tutor</h3>
 
-                        <hr>
+                            <p>
+                                ID do tutor:
+                                <?php echo $paciente['id_tutor']; ?>
+                            </p>
+
+                            <p>
+                                Nome:
+                                <?php echo $paciente['nome_tutor']; ?>
+                            </p>
+
+                            <p>
+                                Telefone:
+                                <?php echo $paciente['telefone']; ?>
+                            </p>
+
+                        </div>
+
+                        <!-- STATUS NO MEIO DO CARTÃO -->
+
+                        <div class="coluna-status">
+
+                            <h3>Status</h3>
+
+                            <?php if ($paciente['status'] == 'ativo') { ?>
+
+                                <span class="status-paciente status-ativo">
+                                    Ativo
+                                </span>
+
+                            <?php } else { ?>
+
+                                <span class="status-paciente status-inativo">
+                                    Inativo
+                                </span>
+
+                            <?php } ?>
+
+                        </div>
+
+                        <!-- AÇÕES À DIREITA -->
+
+                        <div class="acoes-paciente">
+
+                            <h3>Ações</h3>
+
+                            <a
+                                class="botao-editar"
+                                href="editarpaciente.php?id=<?php echo $paciente['id']; ?>"
+                            >
+                                Editar paciente
+                            </a>
+
+                            <form action="statuspaciente.php" method="post">
+
+                                <input
+                                    type="hidden"
+                                    name="id"
+                                    value="<?php echo $paciente['id']; ?>"
+                                >
+
+                                <?php if ($paciente['status'] == 'ativo') { ?>
+
+                                    <input
+                                        type="hidden"
+                                        name="status"
+                                        value="inativo"
+                                    >
+
+                                    <input
+                                        class="botao-inativar"
+                                        type="submit"
+                                        value="Inativar paciente"
+                                        onclick="return confirm('Deseja inativar este paciente?')"
+                                    >
+
+                                <?php } else { ?>
+
+                                    <input
+                                        type="hidden"
+                                        name="status"
+                                        value="ativo"
+                                    >
+
+                                    <input
+                                        class="botao-ativar"
+                                        type="submit"
+                                        value="Ativar paciente"
+                                        onclick="return confirm('Deseja ativar este paciente?')"
+                                    >
+
+                                <?php } ?>
+
+                            </form>
+
+                            <a
+                                class="botao-excluir"
+                                href="excluirpaciente.php?id=<?php echo $paciente['id']; ?>"
+                            >
+                                Excluir paciente
+                            </a>
+
+                        </div>
 
                     </div>
 

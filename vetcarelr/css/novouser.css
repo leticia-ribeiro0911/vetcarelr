@@ -8,17 +8,18 @@ body {
 
 /* Conteúdo principal */
 main {
-    padding: 40px 6%;
+    padding: 40px 20px;
     min-height: 65vh;
 }
 
 /* Título principal */
 main h1 {
-    color: #4C9C9B;
+    max-width: 600px;
+    margin: 0 auto 25px;
+    color: #397F7E;
     font-family: 'DM Serif Display', serif;
     font-size: 36px;
     font-weight: normal;
-    margin-bottom: 25px;
 }
 
 /* Formulário */
@@ -50,6 +51,7 @@ main form label {
 main form input[type="text"],
 main form input[type="email"],
 main form input[type="password"] {
+    display: block;
     width: 100%;
     padding: 12px;
     border: 1px solid #97CBB7;
@@ -68,6 +70,7 @@ main form input:focus {
 
 /* Botão cadastrar */
 main form input[type="submit"] {
+    display: block;
     width: 100%;
     background-color: #4C9C9B;
     color: #FFFFFF;
@@ -87,10 +90,12 @@ main form input[type="submit"]:hover {
 }
 
 /* Mensagem de retorno */
-main > p:first-of-type {
+main > p {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    color: #4A6462;
     font-size: 14px;
     line-height: 1.6;
-    margin-bottom: 20px;
 }
 
 /* Link para voltar à equipe */

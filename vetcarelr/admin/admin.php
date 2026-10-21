@@ -71,6 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 </form>
 
+                <p><strong>E-mail:</strong> adminvet@vetcarelr.com</p>
+                <p><strong>Senha:</strong> luansantana</p>
+
                 <?php
                 if ($erro != "") {
                     echo "<p class='mensagem-erro'>$erro</p>";

@@ -3,7 +3,7 @@
 body {
     margin: 0;
     background-color: #F0EBDC;
-    color: #4C9C9B;
+    color: #356F70;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -15,21 +15,23 @@ main {
 
 /* Título principal */
 main > h1 {
-    color: #4C9C9B;
+    color: #397F7E;
     font-family: 'DM Serif Display', serif;
     font-size: 36px;
     font-weight: normal;
+    margin-top: 0;
     margin-bottom: 10px;
 }
 
 /* Texto de apresentação */
 main > p {
+    color: #4A6462;
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.7;
     margin-bottom: 20px;
 }
 
-/* Link para cadastrar paciente */
+/* Botão de cadastrar paciente */
 main > p a {
     display: inline-block;
     background-color: #E2A3A6;
@@ -48,29 +50,29 @@ main > p a:hover {
 /* Separadores principais */
 main > hr {
     border: none;
-    border-top: 1px solid #E2A3A6;
+    border-top: 1px solid #D9C7B7;
     margin: 30px 0;
 }
 
 /* Seções de cadastro */
-main > div {
+.secao-pacientes {
     background-color: #FFFFFF;
-    border: 1px solid #E2A3A6;
+    border: 1px solid #E2D3C6;
     border-radius: 12px;
     padding: 25px;
     margin-bottom: 25px;
 }
 
 /* Títulos das seções */
-main > div > h2 {
-    color: #4C9C9B;
+.secao-pacientes > h2 {
+    color: #397F7E;
     font-size: 21px;
     margin-top: 0;
     margin-bottom: 20px;
 }
 
-/* Formulário de busca */
-main form {
+/* Busca de pacientes */
+.secao-pacientes > form {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -78,16 +80,17 @@ main form {
     margin-top: 20px;
 }
 
-/* Texto do campo de busca */
-main form label {
+/* Texto da busca */
+.secao-pacientes > form label {
+    color: #405B59;
     font-size: 13px;
     font-weight: 600;
 }
 
 /* Campo para digitar o ID */
-main form input[type="number"] {
+.secao-pacientes > form input[type="number"] {
     padding: 10px;
-    border: 1px solid #97CBB7;
+    border: 1px solid #97BFB4;
     border-radius: 6px;
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
@@ -97,13 +100,13 @@ main form input[type="number"] {
 }
 
 /* Campo selecionado */
-main form input[type="number"]:focus {
-    outline: 2px solid #97CBB7;
+.secao-pacientes > form input[type="number"]:focus {
+    outline: 2px solid #97BFB4;
 }
 
-/* Botão de busca */
-main form input[type="submit"] {
-    background-color: #4C9C9B;
+/* Botão buscar */
+.secao-pacientes > form input[type="submit"] {
+    background-color: #397F7E;
     color: #FFFFFF;
     border: none;
     border-radius: 6px;
@@ -114,60 +117,218 @@ main form input[type="submit"] {
     cursor: pointer;
 }
 
-main form input[type="submit"]:hover {
-    background-color: #397F7E;
+.secao-pacientes > form input[type="submit"]:hover {
+    background-color: #2E6968;
 }
 
-/* Cartões individuais dos pacientes */
-main > div > div {
+/* Cartão de cada paciente */
+.cartao-paciente {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(100px, 1fr) minmax(150px, 1fr);
+    gap: 20px;
+    align-items: start;
     background-color: #FDFBF7;
-    border: 1px solid #E2A3A6;
-    border-radius: 8px;
-    padding: 20px;
-    margin-top: 20px;
+    border: 1px solid #E2D3C6;
+    border-radius: 10px;
+    padding: 22px;
+    margin-top: 18px;
+}
+
+/* Dados do paciente e do tutor */
+.dados-paciente {
+    grid-column: 1;
+    min-width: 0;
 }
 
 /* Nome do paciente */
-main > div > div h2 {
+.dados-paciente h2 {
     color: #4C9C9B;
+    font-family: 'Montserrat', sans-serif;
     font-size: 19px;
-    margin-top: 0;
-}
-
-/* Subtítulo dos dados do tutor */
-main > div > div h3 {
-    color: #E2A3A6;
-    font-size: 15px;
-    margin-top: 20px;
-}
-
-/* Informações do paciente e do tutor */
-main > div > div p {
-    color: #4C9C9B;
-    font-size: 13px;
-    line-height: 1.7;
+    font-weight: 600;
+    margin: 0 0 15px;
     overflow-wrap: anywhere;
 }
 
-/* Linha dentro dos cartões */
-main > div > div hr {
+/* Título dos dados do tutor */
+.dados-paciente h3 {
+    color: #E2A3A6;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
+/* Informações do paciente e do tutor */
+.dados-paciente p {
+    color: #4C9C9B;
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 5px 0;
+    overflow-wrap: anywhere;
+}
+
+/* Coluna do status */
+.coluna-status {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Título do status */
+.coluna-status h3 {
+    color: #4C9C9B;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 12px;
+}
+
+/* Status do paciente */
+.status-paciente {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 9px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Paciente ativo */
+.status-ativo {
+    background-color: #DDF2E3;
+    color: #247044;
+    border: 1px solid #B8DEC4;
+}
+
+/* Paciente inativo */
+.status-inativo {
+    background-color: #FBE5E5;
+    color: #B42332;
+    border: 1px solid #F0C4C7;
+}
+
+/* Coluna das ações */
+.acoes-paciente {
+    grid-column: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Título das ações */
+.acoes-paciente h3 {
+    color: #4C9C9B;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 0 12px;
+}
+
+/* Formulário de ativar e inativar */
+.acoes-paciente form {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+/* Botões das ações */
+.acoes-paciente a,
+.acoes-paciente input[type="submit"] {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 10px 8px;
     border: none;
-    border-top: 1px solid #F0EBDC;
-    margin-top: 20px;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Botão editar */
+.botao-editar {
+    background-color: #DCEBE8;
+    color: #316C68;
+}
+
+.botao-editar:hover {
+    background-color: #C5DFD9;
+}
+
+/* Botão ativar */
+.botao-ativar {
+    background-color: #DDF2E3;
+    color: #247044;
+}
+
+.botao-ativar:hover {
+    background-color: #C6E7D0;
+}
+
+/* Botão inativar */
+.botao-inativar {
+    background-color: #F9EBD7;
+    color: #8A5B24;
+}
+
+.botao-inativar:hover {
+    background-color: #F1DDBE;
+}
+
+/* Botão excluir */
+.botao-excluir {
+    background-color: #FBE5E5;
+    color: #B42332;
+}
+
+.botao-excluir:hover {
+    background-color: #F4CDCF;
 }
 
 
-/* Título e botão de cadastro alinhados */
+/* Título e botão de cadastro */
 main > h1 {
     display: inline-block;
     vertical-align: middle;
-    margin-top: 0;
-    margin-bottom: 10px;
+    width: calc(100% - 220px);
+    box-sizing: border-box;
 }
 
-main > p:has(a[href="novopet.php"]) {
+/* Botão de cadastrar paciente */
+main > p a {
     display: inline-block;
-    float: right;
-    margin-top: -100;
-    margin-bottom: 10px;
+    background-color: #E2A3A6;
+    color: #FFFFFF;
+    padding: 12px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+main > p a:hover {
+    background-color: #C98287;
+}
+
+/* Posicionamento do botão no canto superior direito */
+main > p:has(a) {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -80px;
+    margin-bottom: 30px;
 }

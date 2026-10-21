@@ -36,13 +36,9 @@ footer div:last-child {
     border-top: 2px solid #E2A3A6;
 }
 
-/* Ajustes para celulares */
-@media (max-width: 600px) {
-    footer div {
-        padding: 15px 20px;
-    }
-
-    footer p {
-        font-size: 11px;
-    }
+.imagebola {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
 }

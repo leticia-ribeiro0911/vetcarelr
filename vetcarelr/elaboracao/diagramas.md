@@ -39,14 +39,6 @@ erDiagram
         varchar senha 
     }
 
-    CONFIGURACOES {
-        int ID PK 
-        varchar horario_atendimento
-        varchar localizacao
-        varchar telefone
-        varchar email
-    }
-
 TUTORES ||--O{ PACIENTES : possuem
 TUTORES ||--O{ AGENDAMENTOS : solicitam
 PACIENTES ||--O{ AGENDAMENTOS : tem

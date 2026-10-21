@@ -1,3 +1,4 @@
+
 /* Estilo geral da página */
 body {
     margin: 0;
@@ -8,30 +9,33 @@ body {
 
 /* Conteúdo principal */
 main {
-    padding: 40px 6%;
+    padding: 40px 20px;
     min-height: 65vh;
 }
 
 /* Título principal */
 main h1 {
-    color: #4C9C9B;
+    max-width: 650px;
+    margin: 0 auto 10px;
+    color: #397F7E;
     font-family: 'DM Serif Display', serif;
     font-size: 36px;
     font-weight: normal;
-    margin-bottom: 10px;
 }
 
 /* Texto de apresentação */
 main > p {
+    max-width: 650px;
+    margin: 0 auto 20px;
+    color: #4A6462;
     font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 25px;
+    line-height: 1.7;
 }
 
 /* Formulário */
 main form {
     max-width: 650px;
-    margin: 30px auto;
+    margin: 0 auto 30px;
     padding: 30px;
     background-color: #FFFFFF;
     border: 1px solid #E2A3A6;
@@ -41,7 +45,7 @@ main form {
 
 /* Títulos das seções */
 main form h2 {
-    color: #4C9C9B;
+    color: #397F7E;
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 22px;
@@ -59,7 +63,10 @@ main form label {
 /* Campos de texto e lista de opções */
 main form input[type="text"],
 main form input[type="tel"],
+main form input[type="email"],
+main form input[type="password"],
 main form select {
+    display: block;
     width: 100%;
     padding: 12px;
     border: 1px solid #97CBB7;
@@ -125,13 +132,12 @@ main > p:has(+ p a[href="pacientes.php"]) {
     border: 1px solid #97CBB7;
     border-radius: 8px;
     padding: 18px;
-    max-width: 650px;
     box-sizing: border-box;
 }
 
 /* Link para voltar aos pacientes */
 main > p a {
-    color: #4C9C9B;
+    color: #397F7E;
     font-size: 13px;
     font-weight: 600;
 }

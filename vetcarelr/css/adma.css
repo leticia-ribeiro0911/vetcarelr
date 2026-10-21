@@ -38,6 +38,10 @@ main h2 {
 
 /* Cartão de cada agendamento */
 main div {
+    box-sizing: border-box;
+}
+
+main > div {
     background-color: #FFFFFF;
     border: 1px solid #E2A3A6;
     border-radius: 12px;
@@ -66,11 +70,75 @@ main strong {
     color: #4C9C9B;
 }
 
+/* Organização das duas colunas */
+main div .colunas-agendamento {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Cada coluna */
+main div .coluna-agendamento {
+    width: 50%;
+    min-width: 0;
+}
+
+/* Títulos das colunas */
+main div .coluna-agendamento h4 {
+    color: #397F7E;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+/* Linha abaixo dos títulos */
+main div .coluna-agendamento hr {
+    border: none;
+    border-top: 1px solid #E2A3A6;
+    margin: 0 0 15px;
+}
+
+/* Status do agendamento */
+.status-agendamento {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Status pendente */
+.status-pendente {
+    background-color: #FFF0D1;
+    color: #91661A;
+}
+
+/* Status confirmado */
+.status-confirmado {
+    background-color: #DCEBE8;
+    color: #316C68;
+}
+
+/* Status recusado */
+.status-recusado {
+    background-color: #FBE5E5;
+    color: #A64D55;
+}
+
+/* Área dos botões */
+main div .botoes-agendamento {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
 /* Formulários dos botões */
 main form {
     display: inline-block;
-    margin-top: 15px;
-    margin-right: 10px;
+    margin: 0;
 }
 
 /* Botões */
@@ -92,17 +160,59 @@ main input[type="submit"]:hover {
 }
 
 /* Botão de recusar */
-main form:nth-of-type(2) input[type="submit"] {
+main form.botao-recusar input[type="submit"] {
     background-color: #E2A3A6;
+    color: #FFFFFF;
 }
 
-main form:nth-of-type(2) input[type="submit"]:hover {
+main form.botao-recusar input[type="submit"]:hover {
     background-color: #C98287;
 }
 
+/* Botão de excluir */
+main form.botao-excluir input[type="submit"] {
+    background-color: #FFFFFF;
+    color: #A64D55;
+    border: 1px solid #E2A3A6;
+}
+
+main form.botao-excluir input[type="submit"]:hover {
+    background-color: #FBE5E5;
+}
+
 /* Linha divisória */
-main hr {
+main > hr {
     border: none;
     border-top: 1px solid #E2A3A6;
     margin-top: 25px;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 700px) {
+    main {
+        padding: 25px 5%;
+    }
+
+    main h1 {
+        font-size: 30px;
+    }
+
+    main div .colunas-agendamento {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    main div .coluna-agendamento {
+        width: 100%;
+    }
+
+    main div .botoes-agendamento {
+        flex-direction: column;
+    }
+
+    main div .botoes-agendamento form,
+    main div .botoes-agendamento input[type="submit"] {
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
