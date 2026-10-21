@@ -1,6 +1,6 @@
 <?php
-$host = "localhost";
-$dbname = "carevetlr_db";
+$host = "192.168.10.54";
+$dbname = "carevetlr";
 $user = "vetcarelr";
 $pass = "lrvetcare";
 
