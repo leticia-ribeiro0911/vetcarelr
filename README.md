@@ -50,6 +50,12 @@ Em seguida, execute:
 CREATE DATABASE carevetlr;
 ```
 
+Caso seja pelo Windows:
+
+```sql
+psql -U postgres
+```
+
 Esse comando cria o banco de dados que será utilizado pelo sistema.
 
 Crie o usuário vetcarelr com senha:
