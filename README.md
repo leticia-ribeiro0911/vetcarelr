@@ -230,11 +230,6 @@ Esta seção pode ser utilizada para apresentar os diagramas elaborados durante 
 - Diagrama entidade-relacionamento (DER).
 - Diagrama de atividades, caso tenha sido elaborado.
 
-## Prototipagem
-A prototipagem do VetCare LR foi feita em média fidelidade para testar o visual e o caminho que o utilizador percorre no sistema antes de criar o código final. 
-
-- Clique no link para ver: https://canva.link/q3a8dbvlz0hqjf1
-
 ## Autoria
 
 Projeto desenvolvido por **Letícia Ribeiro da Silva**, como parte do Projeto Integrador do curso Técnico em Desenvolvimento de Sistemas do SENAI.
