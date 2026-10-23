@@ -53,6 +53,16 @@ CREATE DATABASE carevetlr;
 
 Esse comando cria o banco de dados que será utilizado pelo sistema.
 
+Crie o usuário vetcarelr com senha:
+```sql
+CREATE USER vetcarelr WITH PASSWORD 'lrvetcare';
+```
+
+Altere o proprietário do database:
+```sql
+ALTER DATABASE carevetlr OWNER TO vetcarelr;
+```
+
 Para sair do PostgreSQL, execute:
 
 ```sql
