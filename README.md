@@ -44,16 +44,16 @@ Para criá-lo, acesse o PostgreSQL pelo terminal utilizando um usuário que tenh
 sudo -u postgres psql
 ```
 
-Em seguida, execute:
-
-```sql
-CREATE DATABASE carevetlr;
-```
-
 Caso seja pelo Windows:
 
 ```sql
 psql -U postgres
+```
+
+Em seguida, execute:
+
+```sql
+CREATE DATABASE carevetlr;
 ```
 
 Esse comando cria o banco de dados que será utilizado pelo sistema.
